@@ -18,4 +18,11 @@ class ViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 
+	// MARK - Init UI & Data
+	func configUI() {
+	}
+
+	func loadData() {
+	}
+
 }

@@ -8,21 +8,23 @@
 
 import UIKit
 
-class TrendingVC: UIViewController {
+class TrendingVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.configUI()
+		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-
 	}
 
 	// MARK - Init UI & Data
-	func configUI() {
-		self.title = Strings.TrendingTitle
+	override func configUI() {
+		title = Strings.TrendingTitle
+	}
+
+	override func loadData() {
 	}
 
 }

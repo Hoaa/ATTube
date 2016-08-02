@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class SearchVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.configUI()
+		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -20,7 +20,11 @@ class SearchVC: UIViewController {
 	}
 
 	// MARK - Init UI & Data
-	func configUI() {
-
+	override func configUI() {
+		title = "Search"
 	}
+    
+    override func loadData() {
+    }
+
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.configUI()
+		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,8 +21,10 @@ class HomeVC: UIViewController {
 	}
 
 	// MARK - Init UI & Data
-	func configUI() {
-		self.title = Strings.HomeTitle
+	override func configUI() {
+		title = Strings.HomeTitle
 	}
 
+	override func loadData() {
+	}
 }

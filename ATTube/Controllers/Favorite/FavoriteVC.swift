@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FavoriteVC: UIViewController {
+class FavoriteVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.configUI()
+		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,7 +21,11 @@ class FavoriteVC: UIViewController {
 	}
 
 	// MARK - Init UI & Data
-	func configUI() {
-		self.title = Strings.FavoriteTitle
+	override func configUI() {
+		title = Strings.FavoriteTitle
 	}
+    
+    override func loadData() {
+    }
+
 }
