@@ -26,5 +26,4 @@ class ViewController: UIViewController {
 
 	func loadData() {
 	}
-
 }

@@ -17,4 +17,7 @@ struct Size {
 	static let menuHeight: CGFloat = 44
 	static let menuItemWidth: CGFloat = mainScreen.size.width / 3
 	static let selectionIndicatorHeight: CGFloat = 4
+
+	// MARK - HomeCell
+	static let homeCellHeight: CGFloat = 255
 }

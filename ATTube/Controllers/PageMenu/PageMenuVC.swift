@@ -65,7 +65,6 @@ class PageMenuVC: ViewController {
 		]
 
 		let yPageMenu = menu.bounds.height + menu.frame.origin.y - Size.menuHeight + Size.selectionIndicatorHeight
-
 		pageMenu = CAPSPageMenu(viewControllers: controllers,
 			frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: Size.pageMenuSize),
 			pageMenuOptions: parameters)

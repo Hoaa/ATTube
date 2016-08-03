@@ -22,4 +22,8 @@ struct Color {
 	static let selectionIndicator = UIColor(red: 245 / 255, green: 211 / 255, blue: 40 / 255, alpha: 1)
 	static let unselectedMenuItemLabel = UIColor(red: 96 / 255, green: 96 / 255, blue: 96 / 255, alpha: 1)
 
+	// HomeVC
+	static let bgFirstCell = UIColor(red: 10 / 255, green: 10 / 255, blue: 10 / 255, alpha: 1)
+	static let bgSecondCell = UIColor(red: 20 / 255, green: 20 / 255, blue: 20 / 255, alpha: 1)
+	static let refreshHeaderView = UIColor(red: 10 / 255, green: 10 / 255, blue: 10 / 255, alpha: 1)
 }

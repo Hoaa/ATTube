@@ -15,4 +15,8 @@ struct Strings {
 	static let trendingTitle = "TRENDING"
 	static let favoriteTitle = "FAVORITE"
 
+	// MARK - HomeVC
+	static let homeCellNibName = "HomeCell"
+	static let homeCellReuseIdentifier = "HomeCellIdentifiler"
+
 }
