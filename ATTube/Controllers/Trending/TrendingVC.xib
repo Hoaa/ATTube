@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrendingVC" customModule="ATTube" customModuleProvider="target">
             <connections>
+                <outlet property="videosTableView" destination="jCX-Ah-eiu" id="SQw-Uf-JWb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,8 +15,24 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jCX-Ah-eiu">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="0.039215686274509803" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="jfh-JO-g3M"/>
+                        <outlet property="delegate" destination="-1" id="WJ5-Gh-qPJ"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="jCX-Ah-eiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="22a-UZ-H5y"/>
+                <constraint firstAttribute="trailing" secondItem="jCX-Ah-eiu" secondAttribute="trailing" id="VWN-hV-0Bo"/>
+                <constraint firstItem="jCX-Ah-eiu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZhC-mv-4Cc"/>
+                <constraint firstAttribute="bottom" secondItem="jCX-Ah-eiu" secondAttribute="bottom" id="zHr-ky-CMC"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="109" y="411"/>
         </view>
     </objects>
 </document>

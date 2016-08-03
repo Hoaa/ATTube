@@ -19,4 +19,7 @@ struct Strings {
 	static let homeCellNibName = "HomeCell"
 	static let homeCellReuseIdentifier = "HomeCellIdentifiler"
 
+	static let trendingCellNibName = "TrendingCell"
+	static let trendingCellReuseIdentifier = "TrendingCellIdentifiler"
+
 }
