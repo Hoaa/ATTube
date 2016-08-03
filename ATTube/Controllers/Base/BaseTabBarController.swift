@@ -20,17 +20,17 @@ class BaseTabBarController: UITabBarController {
 	}
 
 	func configTabbarController() {
-		let homeVC = HomeVC(nibName: Strings.HomeNibName, bundle: nil)
-		let trendingVC = TrendingVC(nibName: Strings.TrendingNibName, bundle: nil)
-		let favoriteVC = FavoriteVC(nibName: Strings.FavoriteNibName, bundle: nil)
+		let homeVC = HomeVC.vc()
+		let trendingVC = TrendingVC.vc()
+		let favoriteVC = FavoriteVC.vc()
 
 		let homeNavi = UINavigationController(rootViewController: homeVC)
 		let trendingNavi = UINavigationController(rootViewController: trendingVC)
 		let favoriteNavi = UINavigationController(rootViewController: favoriteVC)
 
-		let homeItem = UITabBarItem(title: Strings.HomeTitle, image: UIImage(named: Strings.HomeTabBarIcon), selectedImage: UIImage(named: ""))
-		let trendingItem = UITabBarItem(title: Strings.TrendingTitle, image: UIImage(named: Strings.HomeTabBarIcon), selectedImage: UIImage(named: ""))
-		let favoriteItem = UITabBarItem(title: Strings.FavoriteTitle, image: UIImage(named: Strings.HomeTabBarIcon), selectedImage: UIImage(named: ""))
+		let homeItem = UITabBarItem(title: Strings.homeTitle, image: UIImage(assetIdentifier: .Home), selectedImage: UIImage(named: ""))
+		let trendingItem = UITabBarItem(title: Strings.trendingTitle, image: UIImage(assetIdentifier: .Home), selectedImage: UIImage(named: ""))
+		let favoriteItem = UITabBarItem(title: Strings.favoriteTitle, image: UIImage(assetIdentifier: .Favorite), selectedImage: UIImage(named: ""))
 
 		homeVC.tabBarItem = homeItem
 		trendingVC.tabBarItem = trendingItem

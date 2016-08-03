@@ -12,7 +12,6 @@ class TrendingVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,7 +20,7 @@ class TrendingVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
-		title = Strings.TrendingTitle
+		title = "K"
 	}
 
 	override func loadData() {

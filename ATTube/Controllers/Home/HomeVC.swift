@@ -10,9 +10,9 @@ import UIKit
 
 class HomeVC: ViewController {
 
+	@IBOutlet weak var fontAnwesome: UILabel!
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -20,9 +20,16 @@ class HomeVC: ViewController {
 
 	}
 
+	override func viewWillAppear(animated: Bool) {
+
+	}
+
+	override func viewDidDisappear(animated: Bool) {
+
+	}
 	// MARK - Init UI & Data
 	override func configUI() {
-		title = Strings.HomeTitle
+
 	}
 
 	override func loadData() {
