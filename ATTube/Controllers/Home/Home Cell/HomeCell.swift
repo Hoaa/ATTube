@@ -8,17 +8,18 @@
 
 import UIKit
 
+private extension CGFloat {
+	static let cellHeight: CGFloat = 255
+}
+
 class HomeCell: UITableViewCell {
 
-	// MARK - outlet
+	// MARK - Outlet
 	@IBOutlet private weak var photo: UIImageView!
 	@IBOutlet private weak var name: UILabel!
 	@IBOutlet private weak var time: UILabel!
 	@IBOutlet private weak var infomation: UILabel!
 	@IBOutlet private weak var totalViews: UILabel!
-
-	// MARK - property
-	var index = 0
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -27,8 +28,12 @@ class HomeCell: UITableViewCell {
 	override func setSelected(selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 	}
-	func setBackgroundColorForContentView() {
+
+	func configCellAtIndex(index: Int) {
 		contentView.backgroundColor = index % 2 == 0 ? Color.bgFirstCell : Color.bgSecondCell
 	}
 
+	static func getCellHeight() -> CGFloat {
+		return CGFloat.cellHeight * Ratio.widthIPhone6
+	}
 }

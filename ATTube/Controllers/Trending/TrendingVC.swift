@@ -20,7 +20,6 @@ class TrendingVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
-		title = "K"
 	}
 
 	override func loadData() {

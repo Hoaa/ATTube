@@ -10,6 +10,18 @@ import UIKit
 import PageMenu
 import SwiftUtils
 
+private extension CGFloat {
+	static let menuHeight: CGFloat = 44
+	static let menuItemWidth: CGFloat = kScreenSize.width / 3
+	static let selectionIndicatorHeight: CGFloat = 4
+}
+
+enum MenuItems: Int {
+	case Home = 0
+	case Trending = 1
+	case Favorite = 2
+}
+
 class PageMenuVC: ViewController {
 
 	// MARK - Oulet
@@ -59,14 +71,14 @@ class PageMenuVC: ViewController {
 				.ViewBackgroundColor(Color.clear),
 				.BottomMenuHairlineColor(Color.clear),
 				.MenuMargin(0),
-				.MenuItemWidth(Size.menuItemWidth),
-				.MenuHeight(Size.menuHeight),
-				.SelectionIndicatorHeight(Size.selectionIndicatorHeight)
+				.MenuItemWidth(CGFloat.menuItemWidth),
+				.MenuHeight(CGFloat.menuHeight),
+				.SelectionIndicatorHeight(CGFloat.selectionIndicatorHeight)
 		]
 
-		let yPageMenu = menu.bounds.height + menu.frame.origin.y - Size.menuHeight + Size.selectionIndicatorHeight
+		let yPageMenu = menu.bounds.height + menu.frame.origin.y - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
 		pageMenu = CAPSPageMenu(viewControllers: controllers,
-			frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: Size.pageMenuSize),
+			frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: view.bounds.size),
 			pageMenuOptions: parameters)
 		pageMenu?.delegate = self
 
@@ -80,23 +92,25 @@ class PageMenuVC: ViewController {
 
 	// Mark - Private function
 	private func moveToMenuItemAt(index: Int) {
-		switch index {
-		case 0:
+		guard let menuItem = MenuItems(rawValue: index) else {
+			return
+		}
+		switch menuItem {
+		case .Home:
 			homeIcon.image = UIImage(assetIdentifier: .HomeActive)
 			trendingIcon.image = UIImage(assetIdentifier: .Trending)
 			favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
 			navigationTitle.text = Strings.homeTitle
-		case 1:
+		case .Trending:
 			homeIcon.image = UIImage(assetIdentifier: .Home)
 			trendingIcon.image = UIImage(assetIdentifier: .TrendingActive)
 			favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
 			navigationTitle.text = Strings.trendingTitle
-		case 2:
+		case .Favorite:
 			homeIcon.image = UIImage(assetIdentifier: .Home)
 			trendingIcon.image = UIImage(assetIdentifier: .Trending)
 			favoriteIcon.image = UIImage(assetIdentifier: .FavoriteActive)
 			navigationTitle.text = Strings.favoriteTitle
-		default: break
 		}
 	}
 }

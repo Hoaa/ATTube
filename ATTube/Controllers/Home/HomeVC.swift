@@ -8,6 +8,7 @@
 
 import UIKit
 import PZPullToRefresh
+import SwiftUtils
 
 class HomeVC: ViewController {
 
@@ -15,7 +16,7 @@ class HomeVC: ViewController {
 	@IBOutlet private weak var videosTableView: UITableView!
 
 	// MARK - Propery
-	private var refreshHeaderView: PZPullToRefreshView?
+	private weak var refreshHeaderView: PZPullToRefreshView?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,9 +28,7 @@ class HomeVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
-		// Register xib for cell
-		let nib = UINib(nibName: Strings.homeCellNibName, bundle: nil)
-		videosTableView.registerNib(nib, forCellReuseIdentifier: Strings.homeCellReuseIdentifier)
+		videosTableView.registerNib(HomeCell)
 
 		// Init refresh header view
 		if refreshHeaderView == nil {
@@ -56,19 +55,15 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let homeCell = tableView.dequeueReusableCellWithIdentifier(Strings.homeCellReuseIdentifier, forIndexPath: indexPath) as? HomeCell
-		homeCell?.index = indexPath.row
-		homeCell?.setBackgroundColorForContentView()
-		return homeCell ?? HomeCell()
+		let homeCell = tableView.dequeue(HomeCell)
+		homeCell.configCellAtIndex(indexPath.row)
+		return homeCell
 	}
 
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return getCellHeight()
+		return HomeCell.getCellHeight()
 	}
 
-	func getCellHeight() -> CGFloat {
-		return Size.homeCellHeight * Ratio.widthIPhone6
-	}
 }
 
 // MARK:UIScrollViewDelegate
