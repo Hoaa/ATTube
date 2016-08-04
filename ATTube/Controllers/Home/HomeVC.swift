@@ -67,7 +67,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
 	}
 
 	func getCellHeight() -> CGFloat {
-		return Size.homeCellHeight * Ratio.widthIPhone6
+		return Size.homeCellHeight * Ratio.vertical
 	}
 }
 

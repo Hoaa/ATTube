@@ -14,11 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-//	static let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+	static let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		let pageMenu = PageMenuVC.vc()
+//		pageMenu.view.frame = UIScreen.mainScreen().bounds
 		let pageMenuNavi = UINavigationController(rootViewController: pageMenu)
 		window?.rootViewController = pageMenuNavi
 		window?.backgroundColor = UIColor.whiteColor()

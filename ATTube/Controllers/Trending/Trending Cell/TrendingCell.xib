@@ -38,6 +38,11 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Hc5-V3-pgM"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCU-B9-T6e" userLabel="Time">
                                         <rect key="frame" x="317" y="161" width="28" height="25"/>
@@ -47,6 +52,11 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="yv3-6C-7so"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1333333333" green="0.58431372550000005" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +64,9 @@
                                     <constraint firstItem="CSr-eh-0A2" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="2vg-RR-Ra4"/>
                                     <constraint firstItem="VXh-L9-yAk" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="BgW-Y0-SVq"/>
                                     <constraint firstAttribute="trailing" secondItem="09M-pT-Xch" secondAttribute="trailing" id="CBi-Q8-uj5"/>
+                                    <constraint firstItem="VXh-L9-yAk" firstAttribute="height" secondItem="09M-pT-Xch" secondAttribute="height" id="Iyg-yL-ctz"/>
                                     <constraint firstAttribute="bottom" secondItem="VXh-L9-yAk" secondAttribute="bottom" id="V3j-K9-IX1"/>
+                                    <constraint firstItem="NCU-B9-T6e" firstAttribute="height" secondItem="09M-pT-Xch" secondAttribute="height" multiplier="25/31" id="Xwr-jo-IoB"/>
                                     <constraint firstAttribute="bottom" secondItem="CSr-eh-0A2" secondAttribute="bottom" id="ard-tp-vrT"/>
                                     <constraint firstItem="09M-pT-Xch" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="bxa-6g-seL"/>
                                     <constraint firstAttribute="bottom" secondItem="NCU-B9-T6e" secondAttribute="bottom" constant="6" id="jBS-Uf-quQ"/>
@@ -75,6 +87,11 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.65098039215686276" green="0.66666666666666663" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="eJZ-qU-eb8"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auD-iQ-JDf">
                                         <rect key="frame" x="331" y="11" width="21" height="21"/>
@@ -95,6 +112,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="auD-iQ-JDf" firstAttribute="leading" secondItem="2XY-29-SDf" secondAttribute="trailing" constant="10" id="0yd-Vf-dCN"/>
+                                    <constraint firstItem="HPr-u7-Fv3" firstAttribute="width" secondItem="D0Y-R9-b68" secondAttribute="width" multiplier="240/345" id="6R2-hw-m3e"/>
                                     <constraint firstItem="auD-iQ-JDf" firstAttribute="centerY" secondItem="D0Y-R9-b68" secondAttribute="centerY" id="9I5-GF-QaW"/>
                                     <constraint firstItem="HPr-u7-Fv3" firstAttribute="top" secondItem="D0Y-R9-b68" secondAttribute="top" id="Jmr-OX-sg7"/>
                                     <constraint firstAttribute="trailing" secondItem="auD-iQ-JDf" secondAttribute="trailing" constant="-7" id="XsM-D2-pQ9"/>
@@ -132,7 +150,7 @@
                 <outlet property="time" destination="NCU-B9-T6e" id="ugq-OF-KeC"/>
                 <outlet property="totalViews" destination="2XY-29-SDf" id="rIb-B2-0eU"/>
             </connections>
-            <point key="canvasLocation" x="465.5" y="400"/>
+            <point key="canvasLocation" x="414.5" y="400"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -29,6 +29,11 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="hT9-Db-LNu"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="hT9-Db-LNu"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUITS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXh-L9-yAk" userLabel="Name Video">
                                         <rect key="frame" x="0.0" y="161" width="52" height="31"/>
@@ -38,6 +43,11 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Hc5-V3-pgM"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCU-B9-T6e" userLabel="Time">
                                         <rect key="frame" x="317" y="161" width="28" height="25"/>
@@ -47,16 +57,24 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="yv3-6C-7so"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1333333333" green="0.58431372550000005" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="CSr-eh-0A2" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="2vg-RR-Ra4"/>
+                                    <constraint firstItem="VXh-L9-yAk" firstAttribute="height" secondItem="09M-pT-Xch" secondAttribute="height" id="74x-qW-8lu"/>
                                     <constraint firstItem="VXh-L9-yAk" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="BgW-Y0-SVq"/>
                                     <constraint firstAttribute="trailing" secondItem="09M-pT-Xch" secondAttribute="trailing" id="CBi-Q8-uj5"/>
                                     <constraint firstAttribute="bottom" secondItem="VXh-L9-yAk" secondAttribute="bottom" id="V3j-K9-IX1"/>
                                     <constraint firstAttribute="bottom" secondItem="CSr-eh-0A2" secondAttribute="bottom" id="ard-tp-vrT"/>
                                     <constraint firstItem="09M-pT-Xch" firstAttribute="leading" secondItem="CEU-J6-5E2" secondAttribute="leading" id="bxa-6g-seL"/>
+                                    <constraint firstItem="09M-pT-Xch" firstAttribute="height" secondItem="CEU-J6-5E2" secondAttribute="height" multiplier="31/192" id="c4n-cg-xqe"/>
+                                    <constraint firstItem="NCU-B9-T6e" firstAttribute="height" secondItem="09M-pT-Xch" secondAttribute="height" multiplier="25/31" id="dhf-Na-5f8"/>
                                     <constraint firstAttribute="bottom" secondItem="NCU-B9-T6e" secondAttribute="bottom" constant="6" id="jBS-Uf-quQ"/>
                                     <constraint firstAttribute="trailing" secondItem="NCU-B9-T6e" secondAttribute="trailing" id="n6J-wS-5dX"/>
                                     <constraint firstAttribute="bottom" secondItem="09M-pT-Xch" secondAttribute="bottom" id="pPx-Dd-j6g"/>
@@ -75,6 +93,11 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.65098039215686276" green="0.66666666666666663" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="eJZ-qU-eb8"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auD-iQ-JDf">
                                         <rect key="frame" x="331" y="11" width="21" height="21"/>
@@ -100,6 +123,7 @@
                                     <constraint firstAttribute="trailing" secondItem="auD-iQ-JDf" secondAttribute="trailing" constant="-7" id="XsM-D2-pQ9"/>
                                     <constraint firstAttribute="bottom" secondItem="HPr-u7-Fv3" secondAttribute="bottom" id="r5C-WL-trh"/>
                                     <constraint firstItem="HPr-u7-Fv3" firstAttribute="leading" secondItem="D0Y-R9-b68" secondAttribute="leading" id="sJu-sw-Mpi"/>
+                                    <constraint firstItem="HPr-u7-Fv3" firstAttribute="width" secondItem="D0Y-R9-b68" secondAttribute="width" multiplier="240/345" id="uFF-lg-rXz"/>
                                     <constraint firstItem="2XY-29-SDf" firstAttribute="centerY" secondItem="D0Y-R9-b68" secondAttribute="centerY" id="vvo-q4-dCr"/>
                                 </constraints>
                             </view>

@@ -20,6 +20,8 @@ class PageMenuVC: ViewController {
 	@IBOutlet private weak var trendingIcon: UIImageView!
 	@IBOutlet private weak var favoriteIcon: UIImageView!
 
+	@IBOutlet private weak var heightNaviConstraint: NSLayoutConstraint!
+
 	// MARK - Property
 	private var pageMenu: CAPSPageMenu?
 	private var controllers = [UIViewController]()
@@ -34,6 +36,7 @@ class PageMenuVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
+		UIApplication.sharedApplication().statusBarStyle = .LightContent
 		navigationController?.navigationBar.hidden = true
 
 		let homeVC = HomeVC.vc()
@@ -63,11 +66,11 @@ class PageMenuVC: ViewController {
 				.MenuHeight(Size.menuHeight),
 				.SelectionIndicatorHeight(Size.selectionIndicatorHeight)
 		]
-
 		let yPageMenu = menu.bounds.height + menu.frame.origin.y - Size.menuHeight + Size.selectionIndicatorHeight
 		pageMenu = CAPSPageMenu(viewControllers: controllers,
-			frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: Size.pageMenuSize),
+			frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu * Ratio.vertical), size: view.bounds.size),
 			pageMenuOptions: parameters)
+
 		pageMenu?.delegate = self
 
 		if let menuView = pageMenu?.view {

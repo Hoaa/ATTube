@@ -12,6 +12,8 @@ import UIKit
  *  A structure of CGFloat to check the screen size and get width, height for kinds of iphone
  */
 public struct Ratio {
+	static let horizontal = UIScreen.currentDevice.width / UIScreen.iPhone6.width
+	static let vertical = UIScreen.currentDevice.height / UIScreen.iPhone6.height
 	public static let widthIPhone4 = UIScreen.currentDevice.width / UIScreen.iPhone4.width
 	public static let widthIPhone5 = UIScreen.currentDevice.width / UIScreen.iPhone5.width
 	public static let widthIPhone6 = UIScreen.currentDevice.width / UIScreen.iPhone6.width
