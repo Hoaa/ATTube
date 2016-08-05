@@ -65,7 +65,7 @@ class PageMenuVC: ViewController {
         let parameters: [CAPSPageMenuOption] = [
                 .MenuItemSeparatorWidth(0),
                 .MenuItemSeparatorPercentageHeight(0.1),
-                .SelectionIndicatorColor(Color.selectionIndicator),
+                .SelectionIndicatorColor(Color.yellow),
                 .MenuItemSeparatorColor(Color.clear),
                 .ScrollMenuBackgroundColor(Color.clear),
                 .ViewBackgroundColor(Color.clear),

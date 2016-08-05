@@ -21,13 +21,4 @@ struct Color {
     static let borderRed = UIColor.redColor()
     static let borderGray = UIColor.RGB(192, 192, 192)
     static let tabBarTint = UIColor.RGB(253, 178, 8)
-
-    // MARK: - PageMenu
-    static let title = yellow
-    static let selectionIndicator = yellow
-
-    // MARK: - HomeVC
-    static let bgFirstCell = black10
-    static let bgSecondCell = black20
-    static let refreshHeaderView = black10
 }
