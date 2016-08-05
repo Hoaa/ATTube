@@ -20,11 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-YU-IHq" userLabel="Playlist Name">
-                                <rect key="frame" x="5" y="0.0" width="72" height="33"/>
+                                <rect key="frame" x="5" y="0.0" width="73" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="V8J-ba-kTz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -76,6 +76,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="shk-ab-Lmf" id="aCm-xm-oyo"/>
+                <outlet property="playlistNameLabel" destination="LCN-YU-IHq" id="33f-6Q-c1p"/>
             </connections>
             <point key="canvasLocation" x="395.5" y="308"/>
         </tableViewCell>
