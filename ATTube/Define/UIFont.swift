@@ -88,7 +88,6 @@ let fontScale = loadFontScale()
 
 func loadFontScale() -> CGFloat {
     return Ratio.widthIPhone6
-
 }
 
 func CCFont(name: FontName, _ type: FontType, _ size: CGFloat) -> UIFont! {

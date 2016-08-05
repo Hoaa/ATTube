@@ -121,8 +121,8 @@
             <connections>
                 <outlet property="descriptionLabel" destination="HPr-u7-Fv3" id="KML-u3-qQ6"/>
                 <outlet property="durationLabel" destination="NCU-B9-T6e" id="0pl-Ei-E08"/>
-                <outlet property="namelabel" destination="VXh-L9-yAk" id="C6s-ZO-QI9"/>
-                <outlet property="photo" destination="CSr-eh-0A2" id="vAN-yu-vEd"/>
+                <outlet property="nameLabel" destination="VXh-L9-yAk" id="Q5g-ue-1mp"/>
+                <outlet property="photoImageView" destination="CSr-eh-0A2" id="McL-Kv-bdM"/>
                 <outlet property="totalViewsLabel" destination="2XY-29-SDf" id="V5W-Ye-GXU"/>
             </connections>
             <point key="canvasLocation" x="465.5" y="400"/>

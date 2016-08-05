@@ -10,11 +10,23 @@ import UIKit
 import PageMenu
 import SwiftUtils
 
+private extension CGFloat {
+    static let menuHeight: CGFloat = 44
+    static let menuItemWidth: CGFloat = kScreenSize.width / 3
+    static let selectionIndicatorHeight: CGFloat = 4
+}
+
+enum MenuItems: Int {
+    case Home = 0
+    case Trending = 1
+    case Favorite = 2
+}
+
 class PageMenuVC: ViewController {
 
     // MARK - Oulet
-    @IBOutlet private weak var menu: UIView!
-    @IBOutlet private weak var navigationTitle: UILabel!
+    @IBOutlet private weak var menuView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
 
     @IBOutlet private weak var homeIcon: UIImageView!
     @IBOutlet private weak var trendingIcon: UIImageView!
@@ -53,20 +65,21 @@ class PageMenuVC: ViewController {
         let parameters: [CAPSPageMenuOption] = [
                 .MenuItemSeparatorWidth(0),
                 .MenuItemSeparatorPercentageHeight(0.1),
-                .SelectionIndicatorColor(Color.selectionIndicator),
+                .SelectionIndicatorColor(Color.yellow),
                 .MenuItemSeparatorColor(Color.clear),
                 .ScrollMenuBackgroundColor(Color.clear),
                 .ViewBackgroundColor(Color.clear),
                 .BottomMenuHairlineColor(Color.clear),
                 .MenuMargin(0),
-                .MenuItemWidth(Size.menuItemWidth),
-                .MenuHeight(Size.menuHeight),
-                .SelectionIndicatorHeight(Size.selectionIndicatorHeight)
+                .MenuItemWidth(CGFloat.menuItemWidth),
+                .MenuHeight(CGFloat.menuHeight),
+                .SelectionIndicatorHeight(CGFloat.selectionIndicatorHeight)
         ]
 
-        let yPageMenu = menu.bounds.height + menu.frame.origin.y - Size.menuHeight + Size.selectionIndicatorHeight
+        let yPageMenu = menuView.height + menuView.originY - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
+        let pageMenuSize = CGSize(width: view.width, height: 603 * Ratio.widthIPhone6)
         pageMenu = CAPSPageMenu(viewControllers: controllers,
-            frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: view.bounds.size),
+            frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: pageMenuSize),
             pageMenuOptions: parameters)
         pageMenu?.delegate = self
 
@@ -80,23 +93,26 @@ class PageMenuVC: ViewController {
 
     // Mark - Private function
     private func moveToMenuItemAt(index: Int) {
-        switch index {
-        case 0:
+        guard let menuItem = MenuItems(rawValue: index) else {
+            return
+        }
+        switch menuItem {
+        case .Home:
             homeIcon.image = UIImage(assetIdentifier: .HomeActive)
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
-            navigationTitle.text = Strings.homeTitle
-        case 1:
+            titleLabel.text = Strings.homeTitle
+        case .Trending:
             homeIcon.image = UIImage(assetIdentifier: .Home)
             trendingIcon.image = UIImage(assetIdentifier: .TrendingActive)
             favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
-            navigationTitle.text = Strings.trendingTitle
-        case 2:
+            titleLabel.text = Strings.trendingTitle
+        case .Favorite:
             homeIcon.image = UIImage(assetIdentifier: .Home)
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .FavoriteActive)
-            navigationTitle.text = Strings.favoriteTitle
-        default: break
+            titleLabel.text = Strings.favoriteTitle
+
         }
     }
 }

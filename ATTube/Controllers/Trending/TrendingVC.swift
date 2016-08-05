@@ -40,13 +40,12 @@ class TrendingVC: ViewController {
         configPullToRefreshView()
     }
 
-    override func loadData() {
-
-    }
+    override func loadData() { }
 
     // MARK: - Private function
     private func configPullToRefreshView() {
         videosTableView.pullToRefreshView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        videosTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
     }
 
     private func handleRefresh() {

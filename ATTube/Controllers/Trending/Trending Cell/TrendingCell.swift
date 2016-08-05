@@ -11,8 +11,8 @@ import UIKit
 class TrendingCell: UITableViewCell {
 
     // MARK - outlet
-    @IBOutlet private weak var photo: UIImageView!
-    @IBOutlet private weak var namelabel: UILabel!
+    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
@@ -27,7 +27,7 @@ class TrendingCell: UITableViewCell {
     }
 
     func configCellAtIndex(index: Int) {
-        contentView.backgroundColor = index % 2 == 0 ? Color.bgFirstCell : Color.bgSecondCell
+        contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
     }
 
     static func getCellHeight() -> CGFloat {
@@ -36,7 +36,7 @@ class TrendingCell: UITableViewCell {
 
     private func autoFontSize() {
         let helveticaFont = HelveticaFont()
-        namelabel.font = helveticaFont.Regular(18)
+        nameLabel.font = helveticaFont.Regular(18)
         durationLabel.font = helveticaFont.Light(14)
         descriptionLabel.font = helveticaFont.Regular(13)
         totalViewsLabel.font = helveticaFont.Regular(13)
