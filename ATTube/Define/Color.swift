@@ -8,13 +8,17 @@
 
 import Foundation
 import UIKit
+import SwiftUtils
 
 struct Color {
 
-	// FDB308 : cam
-	// A8A8A8 :xam
-	static let borderWhite = UIColor.whiteColor()
-	static let borderRed = UIColor.redColor()
-	static let tabBarTint = UIColor(red: 253 / 255, green: 178 / 255, blue: 8 / 255, alpha: 1)
-	static let borderGray = UIColor(red: 192 / 255, green: 192 / 255, blue: 192 / 255, alpha: 1)
+    static let black10 = UIColor.RGB(10, 10, 10)
+    static let black20 = UIColor.RGB(20, 20, 20)
+    static let clear = UIColor.clearColor()
+    static let yellow = UIColor.RGB(245, 211, 40)
+
+    static let borderWhite = UIColor.whiteColor()
+    static let borderRed = UIColor.redColor()
+    static let borderGray = UIColor.RGB(192, 192, 192)
+    static let tabBarTint = UIColor.RGB(253, 178, 8)
 }

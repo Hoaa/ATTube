@@ -12,7 +12,6 @@ class SearchVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,7 +20,6 @@ class SearchVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
-		title = "Search"
 	}
     
     override func loadData() {

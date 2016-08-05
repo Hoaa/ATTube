@@ -12,7 +12,6 @@ class FavoriteVC: ViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configUI()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -22,10 +21,9 @@ class FavoriteVC: ViewController {
 
 	// MARK - Init UI & Data
 	override func configUI() {
-		title = Strings.FavoriteTitle
 	}
-    
-    override func loadData() {
-    }
+
+	override func loadData() {
+	}
 
 }

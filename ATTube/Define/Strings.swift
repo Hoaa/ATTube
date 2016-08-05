@@ -8,21 +8,11 @@
 
 import Foundation
 
-class Strings {
-
-	// MARK - nibName for view controller
-	static let HomeNibName = "HomeVC"
-	static let TrendingNibName = "TrendingVC"
-	static let FavoriteNibName = "FavoriteVC"
+struct Strings {
 
 	// MARK - Title for view controller
-	static let HomeTitle = "Home"
-	static let TrendingTitle = "Trending"
-	static let FavoriteTitle = "Favorite"
-
-	// MARK - photo name
-	static let HomeTabBarIcon = "tabbar_ic_home"
-	static let TrendingTabbarIcon = "tabbar_ic_trending"
-	static let FavoriteTabbarIcon = "tabbar_ic_favorite"
+	static let homeTitle = "HOME"
+	static let trendingTitle = "TRENDING"
+	static let favoriteTitle = "FAVORITE"
 
 }

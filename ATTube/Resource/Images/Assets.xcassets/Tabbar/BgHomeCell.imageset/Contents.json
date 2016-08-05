@@ -2,15 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "house-with-chimney-4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "BgHomeCell@2x.png"
     },
     {
       "idiom" : "universal",
+      "filename" : "BgHomeCell@3x.jpeg",
       "scale" : "3x"
     }
   ],
