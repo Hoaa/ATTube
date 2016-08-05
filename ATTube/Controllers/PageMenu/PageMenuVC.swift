@@ -25,8 +25,8 @@ enum MenuItems: Int {
 class PageMenuVC: ViewController {
 
     // MARK - Oulet
-    @IBOutlet private weak var menu: UIView!
-    @IBOutlet private weak var navigationTitle: UILabel!
+    @IBOutlet private weak var menuView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
 
     @IBOutlet private weak var homeIcon: UIImageView!
     @IBOutlet private weak var trendingIcon: UIImageView!
@@ -76,7 +76,7 @@ class PageMenuVC: ViewController {
                 .SelectionIndicatorHeight(CGFloat.selectionIndicatorHeight)
         ]
 
-        let yPageMenu = menu.height + menu.originY - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
+        let yPageMenu = menuView.height + menuView.originY - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
         let pageMenuSize = CGSize(width: view.width, height: 603 * Ratio.widthIPhone6)
         pageMenu = CAPSPageMenu(viewControllers: controllers,
             frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: pageMenuSize),
@@ -101,17 +101,17 @@ class PageMenuVC: ViewController {
             homeIcon.image = UIImage(assetIdentifier: .HomeActive)
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
-            navigationTitle.text = Strings.homeTitle
+            titleLabel.text = Strings.homeTitle
         case .Trending:
             homeIcon.image = UIImage(assetIdentifier: .Home)
             trendingIcon.image = UIImage(assetIdentifier: .TrendingActive)
             favoriteIcon.image = UIImage(assetIdentifier: .Favorite)
-            navigationTitle.text = Strings.trendingTitle
+            titleLabel.text = Strings.trendingTitle
         case .Favorite:
             homeIcon.image = UIImage(assetIdentifier: .Home)
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .FavoriteActive)
-            navigationTitle.text = Strings.favoriteTitle
+            titleLabel.text = Strings.favoriteTitle
         }
     }
 }

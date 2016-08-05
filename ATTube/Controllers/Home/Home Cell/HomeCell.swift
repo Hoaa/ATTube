@@ -9,31 +9,40 @@
 import UIKit
 
 private extension CGFloat {
-	static let cellHeight: CGFloat = 255
+    static let cellHeight: CGFloat = 255
 }
 
 class HomeCell: UITableViewCell {
 
-	// MARK - Outlet
-	@IBOutlet private weak var photo: UIImageView!
-	@IBOutlet private weak var name: UILabel!
-	@IBOutlet private weak var time: UILabel!
-	@IBOutlet private weak var infomation: UILabel!
-	@IBOutlet private weak var totalViews: UILabel!
+    // MARK - Outlet
+    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var totalViewsLabel: UILabel!
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-	}
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        autoFontSize()
+    }
 
-	override func setSelected(selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-	}
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
 
-	func configCellAtIndex(index: Int) {
-		contentView.backgroundColor = index % 2 == 0 ? Color.bgFirstCell : Color.bgSecondCell
-	}
+    func configCellAtIndex(index: Int) {
+        contentView.backgroundColor = index % 2 == 0 ? Color.bgFirstCell : Color.bgSecondCell
+    }
 
-	static func getCellHeight() -> CGFloat {
-		return CGFloat.cellHeight * Ratio.widthIPhone6
-	}
+    static func getCellHeight() -> CGFloat {
+        return CGFloat.cellHeight * Ratio.widthIPhone6
+    }
+
+    private func autoFontSize() {
+        let helveticaFont = HelveticaFont()
+        nameLabel.font = helveticaFont.Regular(18)
+        durationLabel.font = helveticaFont.Light(14)
+        descriptionLabel.font = helveticaFont.Regular(13)
+        totalViewsLabel.font = helveticaFont.Regular(13)
+    }
 }

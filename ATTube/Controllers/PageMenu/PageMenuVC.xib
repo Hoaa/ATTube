@@ -11,8 +11,8 @@
             <connections>
                 <outlet property="favoriteIcon" destination="BWj-uc-KwF" id="bh8-Rb-80h"/>
                 <outlet property="homeIcon" destination="6pE-ba-N9L" id="fxX-cV-U4g"/>
-                <outlet property="menu" destination="XwC-8z-Tlb" id="8GN-am-9Gn"/>
-                <outlet property="navigationTitle" destination="Lyh-FW-AYT" id="3eh-Sn-4yE"/>
+                <outlet property="menuView" destination="XwC-8z-Tlb" id="K83-e1-coo"/>
+                <outlet property="titleLabel" destination="Lyh-FW-AYT" id="WDX-oc-C8D"/>
                 <outlet property="trendingIcon" destination="DD4-Ga-L0R" id="ekH-w3-5Rn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -152,10 +152,15 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BgNavigation" translatesAutoresizingMaskIntoConstraints="NO" id="feM-7a-D38">
-                    <rect key="frame" x="0.0" y="108" width="375" height="8"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="8" id="dLR-uA-8l3"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dLR-uA-8l3"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -166,6 +171,7 @@
                 <constraint firstItem="feM-7a-D38" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QmJ-le-1N6"/>
                 <constraint firstItem="XwC-8z-Tlb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WmU-FU-Zli"/>
                 <constraint firstItem="XwC-8z-Tlb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cxN-4f-4Dl"/>
+                <constraint firstAttribute="bottom" secondItem="feM-7a-D38" secondAttribute="bottom" id="yuh-ZR-KT9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="450.5" y="384.5"/>
