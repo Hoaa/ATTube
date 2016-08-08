@@ -73,6 +73,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let homeCell = tableView.dequeue(HomeCell)
         homeCell.configCellAtIndex(indexPath.row)
         return homeCell
@@ -81,5 +82,4 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return HomeCell.getCellHeight()
     }
-
 }

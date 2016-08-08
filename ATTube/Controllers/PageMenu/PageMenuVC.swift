@@ -112,6 +112,7 @@ class PageMenuVC: ViewController {
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .FavoriteActive)
             titleLabel.text = Strings.favoriteTitle
+
         }
     }
 }
