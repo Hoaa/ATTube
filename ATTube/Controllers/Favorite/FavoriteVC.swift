@@ -9,18 +9,10 @@
 import UIKit
 import SwiftUtils
 
-protocol NavigationBarDelegate {
-    func hideNavigationBar(viewController: ViewController)
-    func showNavigationBar(viewController: ViewController)
-}
-
 class FavoriteVC: ViewController {
 
     // MARK:- Outlet
     @IBOutlet weak var tableView: UITableView!
-
-    // MARK: - Propery
-    var delegate: NavigationBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +38,9 @@ extension FavoriteVC: UITableViewDataSource, UITableViewDelegate {
         return 10
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let favorite = tableView.dequeue(FavoriteCell)
-        favorite.configCellAtIndex(indexPath.row)
-        return favorite
+        let favoriteCell = tableView.dequeue(FavoriteCell)
+        favoriteCell.configCellAtIndex(indexPath.row)
+        return favoriteCell
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

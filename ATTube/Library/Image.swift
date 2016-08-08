@@ -10,12 +10,12 @@ import UIKit
 
 extension UIImage {
 
-	enum AssetIdentifier: String {
-		case Home, HomeActive, Trending, TrendingActive, Favorite, FavoriteActive, BgNavigation, Search
-	}
+    enum AssetIdentifier: String {
+        case Home, HomeActive, Trending, TrendingActive, Favorite, FavoriteActive, BgNavigation, Search
+    }
 
-	convenience init!(assetIdentifier: AssetIdentifier) {
-		self.init(named: assetIdentifier.rawValue)
-	}
+    convenience init!(assetIdentifier: AssetIdentifier) {
+        self.init(named: assetIdentifier.rawValue)
+    }
 
 }

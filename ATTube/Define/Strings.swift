@@ -10,16 +10,8 @@ import Foundation
 
 struct Strings {
 
-	// MARK - Title for view controller
-	static let homeTitle = "HOME"
-	static let trendingTitle = "TRENDING"
-	static let favoriteTitle = "FAVORITE"
-
-	// MARK - HomeVC
-	static let homeCellNibName = "HomeCell"
-	static let homeCellReuseIdentifier = "HomeCellIdentifiler"
-
-	static let trendingCellNibName = "TrendingCell"
-	static let trendingCellReuseIdentifier = "TrendingCellIdentifiler"
-
+    // MARK - Title for view controller
+    static let homeTitle = "HOME"
+    static let trendingTitle = "TRENDING"
+    static let favoriteTitle = "FAVORITE"
 }

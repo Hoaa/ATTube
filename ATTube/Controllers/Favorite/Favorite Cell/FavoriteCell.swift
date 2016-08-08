@@ -36,7 +36,7 @@ class FavoriteCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerNib(FavoriteCollectionCell)
-        contentView.backgroundColor = index % 2 == 0 ? Color.bgFirstCell : Color.bgSecondCell
+        contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
     }
 
     static func getCellHeight() -> CGFloat {

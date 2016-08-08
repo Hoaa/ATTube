@@ -2,11 +2,10 @@
 //  UIView.swift
 //  ATTube
 //
-//  Created by Asiantech1 on 8/4/16.
+//  Created by Asiantech1 on 8/5/16.
 //  Copyright © 2016 at. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {

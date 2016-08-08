@@ -3,6 +3,7 @@ PODS:
   - ObjectMapper (1.3.0)
   - PageMenu (1.2.9)
   - PZPullToRefresh (0.0.9)
+  - SVPullToRefresh (0.4.1)
   - SwiftUtils (1.4.5)
 
 DEPENDENCIES:
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 1.3)
   - PageMenu
   - PZPullToRefresh
+  - SVPullToRefresh
   - SwiftUtils (~> 1.4.5)
 
 SPEC CHECKSUMS:
@@ -17,8 +19,9 @@ SPEC CHECKSUMS:
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftUtils: f4200309f3d12c3caee5601ff857c23aad360b81
 
-PODFILE CHECKSUM: 6e5e963806e96292c761e88e788008eb3a5cc044
+PODFILE CHECKSUM: 2bf97fdb0784cefb9be1216f1dab8ee0c25491bb
 
 COCOAPODS: 1.0.1

@@ -20,13 +20,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-YU-IHq" userLabel="Playlist Name">
-                                <rect key="frame" x="5" y="0.0" width="73" height="33"/>
+                                <rect key="frame" x="10" y="0.0" width="73" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="V8J-ba-kTz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="V8J-ba-kTz"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngv-1A-8Ah" userLabel="More">
                                 <rect key="frame" x="343" y="6" width="22" height="22"/>
@@ -39,17 +44,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ngv-1A-8Ah" secondAttribute="trailing" constant="10" id="4er-OF-sRL"/>
-                            <constraint firstItem="Ngv-1A-8Ah" firstAttribute="width" secondItem="fYc-C9-e67" secondAttribute="width" multiplier="22/35" id="Bvq-sf-5w6"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="22/35" id="HXM-eg-j3J"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="top" secondItem="fYc-C9-e67" secondAttribute="top" id="LHo-b1-4de"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="centerY" secondItem="LCN-YU-IHq" secondAttribute="centerY" id="Tuj-Ov-5MN"/>
-                            <constraint firstItem="LCN-YU-IHq" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" constant="5" id="ggM-Hb-6IJ"/>
+                            <constraint firstItem="LCN-YU-IHq" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="33/35" id="ZhD-Aj-4Fk"/>
+                            <constraint firstItem="LCN-YU-IHq" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" constant="10" id="ggM-Hb-6IJ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Bvq-sf-5w6"/>
-                            </mask>
-                        </variation>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="shk-ab-Lmf">
                         <rect key="frame" x="0.0" y="35" width="375" height="144"/>

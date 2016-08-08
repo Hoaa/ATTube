@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="67" width="180" height="29"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUITS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRI-u7-Rkm">
-                                <rect key="frame" x="0.0" y="67" width="46" height="29"/>
+                                <rect key="frame" x="5" y="67" width="46" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="CPs-OL-eVQ"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPx-Pu-26B">
-                                <rect key="frame" x="152" y="67" width="28" height="29"/>
+                                <rect key="frame" x="147" y="67" width="28" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="FpL-0k-gbM"/>
                                 </constraints>
@@ -58,12 +58,12 @@
                             <constraint firstItem="SJJ-3W-cKD" firstAttribute="leading" secondItem="vFx-ig-8U6" secondAttribute="leading" id="6Ji-vI-y5d"/>
                             <constraint firstAttribute="trailing" secondItem="XV1-48-fbY" secondAttribute="trailing" id="7Zn-kr-XGg"/>
                             <constraint firstItem="jRI-u7-Rkm" firstAttribute="height" secondItem="vFx-ig-8U6" secondAttribute="height" multiplier="31/100" id="8x5-M2-rJM"/>
-                            <constraint firstItem="jRI-u7-Rkm" firstAttribute="leading" secondItem="vFx-ig-8U6" secondAttribute="leading" id="BAg-qW-90c"/>
+                            <constraint firstItem="jRI-u7-Rkm" firstAttribute="leading" secondItem="vFx-ig-8U6" secondAttribute="leading" constant="5" id="BAg-qW-90c"/>
                             <constraint firstItem="XV1-48-fbY" firstAttribute="leading" secondItem="vFx-ig-8U6" secondAttribute="leading" id="DUs-0H-hej"/>
                             <constraint firstItem="XV1-48-fbY" firstAttribute="height" secondItem="vFx-ig-8U6" secondAttribute="height" multiplier="31/100" id="FWm-q3-29T"/>
                             <constraint firstAttribute="bottom" secondItem="SJJ-3W-cKD" secondAttribute="bottom" id="No4-LV-CQn"/>
                             <constraint firstAttribute="bottom" secondItem="VPx-Pu-26B" secondAttribute="bottom" id="cn9-5M-jZ1"/>
-                            <constraint firstAttribute="trailing" secondItem="VPx-Pu-26B" secondAttribute="trailing" id="fLH-KE-Tze"/>
+                            <constraint firstAttribute="trailing" secondItem="VPx-Pu-26B" secondAttribute="trailing" constant="5" id="fLH-KE-Tze"/>
                             <constraint firstAttribute="bottom" secondItem="XV1-48-fbY" secondAttribute="bottom" id="gmU-9F-6rm"/>
                             <constraint firstItem="VPx-Pu-26B" firstAttribute="height" secondItem="vFx-ig-8U6" secondAttribute="height" multiplier="31/100" id="pFz-xD-hm0"/>
                             <constraint firstAttribute="bottom" secondItem="jRI-u7-Rkm" secondAttribute="bottom" id="pMQ-eK-ahU"/>
@@ -71,7 +71,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description description afsa description abvcs bla bla…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp7-cX-bJ3">
-                        <rect key="frame" x="2" y="98" width="176" height="44"/>
+                        <rect key="frame" x="5" y="98" width="170" height="44"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.65098039220000004" green="0.66666666669999997" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -81,11 +81,11 @@
             </view>
             <constraints>
                 <constraint firstItem="vFx-ig-8U6" firstAttribute="top" secondItem="nmb-ra-f3q" secondAttribute="top" id="Afu-jo-Qom"/>
-                <constraint firstAttribute="trailing" secondItem="Mp7-cX-bJ3" secondAttribute="trailing" constant="2" id="GUa-Ra-Hqu"/>
+                <constraint firstAttribute="trailing" secondItem="Mp7-cX-bJ3" secondAttribute="trailing" constant="5" id="GUa-Ra-Hqu"/>
                 <constraint firstAttribute="trailing" secondItem="vFx-ig-8U6" secondAttribute="trailing" id="HGt-l0-AAK"/>
                 <constraint firstAttribute="bottom" secondItem="Mp7-cX-bJ3" secondAttribute="bottom" constant="2" id="Mfu-bN-JUR"/>
                 <constraint firstItem="Mp7-cX-bJ3" firstAttribute="height" secondItem="nmb-ra-f3q" secondAttribute="height" multiplier="44/144" id="Sjv-hS-MpI"/>
-                <constraint firstItem="Mp7-cX-bJ3" firstAttribute="leading" secondItem="nmb-ra-f3q" secondAttribute="leading" constant="2" id="T1b-Ys-eSt"/>
+                <constraint firstItem="Mp7-cX-bJ3" firstAttribute="leading" secondItem="nmb-ra-f3q" secondAttribute="leading" constant="5" id="T1b-Ys-eSt"/>
                 <constraint firstItem="vFx-ig-8U6" firstAttribute="leading" secondItem="nmb-ra-f3q" secondAttribute="leading" id="Vi0-WK-uck"/>
                 <constraint firstItem="Mp7-cX-bJ3" firstAttribute="top" secondItem="vFx-ig-8U6" secondAttribute="bottom" constant="2" id="ujE-Mj-AEC"/>
             </constraints>
