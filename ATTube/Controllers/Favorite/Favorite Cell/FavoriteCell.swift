@@ -10,12 +10,13 @@ import UIKit
 import SwiftUtils
 
 private extension CGFloat {
-    static let collectionCellWidth: CGFloat = 180
+    static let collectionCellWidth: CGFloat = 180 * Ratio.widthIPhone6
+    static let minimumLineSpacing: CGFloat = 5 * Ratio.widthIPhone6
+
     static let paddingTop: CGFloat = 0
     static let paddingLeft: CGFloat = 5 * Ratio.widthIPhone6
     static let paddingRight: CGFloat = 5 * Ratio.widthIPhone6
     static let paddingBottom: CGFloat = 0
-    static let minimumLineSpacing: CGFloat = 5 * Ratio.widthIPhone6
 }
 
 class FavoriteCell: UITableViewCell {
@@ -33,9 +34,9 @@ class FavoriteCell: UITableViewCell {
     }
 
     func configCellAtIndex(index: Int) {
+        collectionView.registerNib(FavoriteCollectionCell)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.registerNib(FavoriteCollectionCell)
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
     }
 
@@ -43,7 +44,7 @@ class FavoriteCell: UITableViewCell {
         return 185 * Ratio.widthIPhone6
     }
 
-    func autoFontSize() {
+    private func autoFontSize() {
         let helveticaFont = HelveticaFont()
         playlistNameLabel.font = helveticaFont.Regular(18)
     }
@@ -65,20 +66,20 @@ extension FavoriteCell: UICollectionViewDelegate, UICollectionViewDataSource {
 extension FavoriteCell: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: Ratio.heightIPhone6 * CGFloat.collectionCellWidth, height: collectionView.bounds.size.height)
+            return CGSize(width: .collectionCellWidth, height: collectionView.bounds.size.height)
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: CGFloat.paddingTop,
-                left: CGFloat.paddingLeft,
-                bottom: CGFloat.paddingBottom,
-                right: CGFloat.paddingRight)
+            return UIEdgeInsets(top: .paddingTop,
+                left: .paddingLeft,
+                bottom: .paddingBottom,
+                right: .paddingRight)
     }
 
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-            return CGFloat.minimumLineSpacing
+            return .minimumLineSpacing
     }
 }

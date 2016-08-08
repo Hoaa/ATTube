@@ -12,7 +12,7 @@ import SwiftUtils
 class FavoriteVC: ViewController {
 
     // MARK:- Outlet
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,7 @@ class FavoriteVC: ViewController {
         tableView.registerNib(FavoriteCell)
     }
 
-    override func loadData() {
-    }
+    override func loadData() { }
 }
 
 // MARK: - UITableviewDataSource, UITableViewDelegate
