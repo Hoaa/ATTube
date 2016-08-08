@@ -9,6 +9,10 @@
 import UIKit
 import SVPullToRefresh
 
+protocol PlayerVCDelegate {
+    func presentViewController()
+}
+
 class PlayerVC: ViewController {
 
     @IBOutlet private weak var videosTableView: UITableView!

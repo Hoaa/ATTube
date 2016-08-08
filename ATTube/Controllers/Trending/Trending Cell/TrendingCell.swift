@@ -8,13 +8,9 @@
 
 import UIKit
 
-private extension CGFloat {
-    static let cellHeight: CGFloat = 255
-}
+class TrendingCell: UITableViewCell {
 
-class HomeCell: UITableViewCell {
-
-    // MARK - Outlet
+    // MARK - outlet
     @IBOutlet private weak var photoImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
@@ -36,7 +32,7 @@ class HomeCell: UITableViewCell {
     }
 
     static func getCellHeight() -> CGFloat {
-        return CGFloat.cellHeight * Ratio.widthIPhone6
+        return 255 * Ratio.widthIPhone6
     }
 
     private func autoFontSize() {

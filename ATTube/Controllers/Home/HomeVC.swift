@@ -15,12 +15,19 @@ class HomeVC: ViewController {
     // MARK - Outlet
     @IBOutlet private weak var videosTableView: UITableView!
 
+    // MARK:- Property
+    var delgate: PlayerVCDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+
     }
 
     // MARK - Init UI & Data
@@ -63,6 +70,10 @@ class HomeVC: ViewController {
             self.videosTableView.infiniteScrollingView.stopAnimating()
         }
     }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
 
 // MARK: - UITableviewDataSource, UITableViewDelegate
@@ -75,7 +86,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let homeCell = tableView.dequeue(HomeCell)
         homeCell.configCellAtIndex(indexPath.row)
-        homeCell.selectionStyle = UITableViewCellSelectionStyle.None
         return homeCell
     }
 
@@ -84,6 +94,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSNotificationCenter.defaultCenter().postNotificationName(Strings.pushPlayerVC, object: nil)
+        delgate?.presentViewController()
     }
 }
