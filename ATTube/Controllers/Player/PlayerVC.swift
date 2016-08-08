@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVPullToRefresh
 
 class PlayerVC: ViewController {
 
@@ -30,6 +31,40 @@ class PlayerVC: ViewController {
         videosTableView.registerNib(PlayerCell)
         videosTableView.dataSource = self
         videosTableView.delegate = self
+
+        // setup pull-to-refresh
+        videosTableView.addPullToRefreshWithActionHandler {
+            self.handleRefresh()
+        }
+
+        // setup infinite scrolling
+        videosTableView.addInfiniteScrollingWithActionHandler {
+            self.handleLoadMore()
+        }
+
+        configPullToRefreshView()
+    }
+
+    // MARK: - Private function
+    private func configPullToRefreshView() {
+        videosTableView.pullToRefreshView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        videosTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+    }
+
+    private func handleRefresh() {
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            print("refresh")
+            self.videosTableView.pullToRefreshView.stopAnimating()
+        }
+    }
+
+    private func handleLoadMore() {
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            print("load more")
+            self.videosTableView.infiniteScrollingView.stopAnimating()
+        }
     }
 
     private func autoFontSize() {
