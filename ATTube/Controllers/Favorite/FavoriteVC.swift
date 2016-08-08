@@ -7,23 +7,42 @@
 //
 
 import UIKit
+import SwiftUtils
 
 class FavoriteVC: ViewController {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
+    // MARK:- Outlet
+    @IBOutlet private weak var tableView: UITableView!
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-	}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
-	// MARK - Init UI & Data
-	override func configUI() {
-	}
+    // MARK - Init UI & Data
+    override func configUI() {
+        tableView.registerNib(FavoriteCell)
+    }
 
-	override func loadData() {
-	}
+    override func loadData() { }
+}
 
+// MARK: - UITableviewDataSource, UITableViewDelegate
+extension FavoriteVC: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let favoriteCell = tableView.dequeue(FavoriteCell)
+        favoriteCell.configCellAtIndex(indexPath.row)
+        return favoriteCell
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return FavoriteCell.getCellHeight()
+    }
 }

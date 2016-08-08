@@ -11,7 +11,6 @@ pod 'Alamofire', '~> 3.4'
 pod 'SwiftUtils', '~> 1.4.5'
 pod 'ObjectMapper', '~> 1.3'
 pod 'PageMenu'
-pod 'PZPullToRefresh'
 pod 'SVPullToRefresh'
 
 end
