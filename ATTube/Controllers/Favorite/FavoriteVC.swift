@@ -10,20 +10,20 @@ import UIKit
 
 class FavoriteVC: ViewController {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
 
-	}
+    }
 
-	// MARK - Init UI & Data
-	override func configUI() {
-	}
+    // MARK - Init UI & Data
+    override func configUI() {
+    }
 
-	override func loadData() {
-	}
+    override func loadData() {
+    }
 
 }

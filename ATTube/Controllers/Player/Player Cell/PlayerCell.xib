@@ -15,15 +15,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40L-vm-Iuc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BgHomeCell" translatesAutoresizingMaskIntoConstraints="NO" id="40L-vm-Iuc">
                         <rect key="frame" x="5" y="3" width="180" height="100"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qug-lY-UFx" userLabel="info">
                         <rect key="frame" x="195" y="3" width="164" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BABILONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVN-3z-rvt">
-                                <rect key="frame" x="0.0" y="0.0" width="81" height="31"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="31"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -67,7 +67,15 @@
                     <constraint firstAttribute="trailing" secondItem="qug-lY-UFx" secondAttribute="trailing" constant="16" id="kOI-bX-EgV"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="400.5" y="353.5"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="oKH-0b-ZYt" id="ESA-vy-pwq"/>
+                <outlet property="totalViewsLabel" destination="etG-g0-g2S" id="qHo-Wi-nQ8"/>
+                <outlet property="videoNameLabel" destination="FVN-3z-rvt" id="MPw-fB-pgg"/>
+            </connections>
+            <point key="canvasLocation" x="403.5" y="311.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="BgHomeCell" width="250" height="140"/>
+    </resources>
 </document>

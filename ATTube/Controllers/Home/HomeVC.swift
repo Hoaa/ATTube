@@ -75,6 +75,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let homeCell = tableView.dequeue(HomeCell)
         homeCell.configCellAtIndex(indexPath.row)
+        homeCell.selectionStyle = UITableViewCellSelectionStyle.None
         return homeCell
     }
 
@@ -82,4 +83,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         return HomeCell.getCellHeight()
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSNotificationCenter.defaultCenter().postNotificationName(Strings.pushPlayerVC, object: nil)
+    }
 }

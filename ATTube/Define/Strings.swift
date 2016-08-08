@@ -10,9 +10,10 @@ import Foundation
 
 struct Strings {
 
-	// MARK - Title for view controller
-	static let homeTitle = "HOME"
-	static let trendingTitle = "TRENDING"
-	static let favoriteTitle = "FAVORITE"
+    // MARK - Title for view controller
+    static let homeTitle = "HOME"
+    static let trendingTitle = "TRENDING"
+    static let favoriteTitle = "FAVORITE"
 
+    static let pushPlayerVC = "pushPlayerVC"
 }

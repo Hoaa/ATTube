@@ -8,11 +8,19 @@
 
 import UIKit
 
+private extension CGFloat {
+    static let cellHeight: CGFloat = 110
+}
+
 class PlayerCell: UITableViewCell {
+
+    @IBOutlet private weak var videoNameLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var totalViewsLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        autoFontSize()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -21,4 +29,18 @@ class PlayerCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configCellAtIndex(index: Int) {
+        contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
+    }
+
+    static func getCellHeight() -> CGFloat {
+        return CGFloat.cellHeight * Ratio.widthIPhone6
+    }
+
+    private func autoFontSize() {
+        let helveticaFont = HelveticaFont()
+        videoNameLabel.font = helveticaFont.Regular(20)
+        descriptionLabel.font = helveticaFont.Regular(14)
+        totalViewsLabel.font = helveticaFont.Regular(14)
+    }
 }

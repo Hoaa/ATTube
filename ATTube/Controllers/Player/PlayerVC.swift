@@ -10,11 +10,11 @@ import UIKit
 
 class PlayerVC: ViewController {
 
-    @IBOutlet weak var videosTableView: UITableView!
+    @IBOutlet private weak var videosTableView: UITableView!
 
-    @IBOutlet weak var videoNameLabel: UILabel!
-    @IBOutlet weak var totalViewsLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var videoNameLabel: UILabel!
+    @IBOutlet private weak var totalViewsLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,9 @@ class PlayerVC: ViewController {
 
     // MARK - Init UI & Data
     override func configUI() {
+        videosTableView.registerNib(PlayerCell)
         videosTableView.dataSource = self
         videosTableView.delegate = self
-
     }
 
     private func autoFontSize() {
@@ -37,6 +37,10 @@ class PlayerVC: ViewController {
         videoNameLabel.font = helveticaFont.Regular(20)
         totalViewsLabel.font = helveticaFont.Light(14)
         descriptionLabel.font = helveticaFont.Regular(14)
+    }
+
+    @IBAction func dismissViewController(sender: UIButton) {
+        dismissViewControllerAnimated(true) { }
     }
 }
 
@@ -48,12 +52,12 @@ extension PlayerVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let homeCell = tableView.dequeue(HomeCell)
-        homeCell.configCellAtIndex(indexPath.row)
-        return homeCell
+        let playerCell = tableView.dequeue(PlayerCell)
+        playerCell.configCellAtIndex(indexPath.row)
+        return playerCell
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return HomeCell.getCellHeight()
+        return PlayerCell.getCellHeight()
     }
 }

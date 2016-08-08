@@ -22,6 +22,10 @@ enum MenuItems: Int {
     case Favorite = 2
 }
 
+private extension Selector {
+    static let pushPlayerVC = #selector(PageMenuVC.pushPlayerVC(_:))
+}
+
 class PageMenuVC: ViewController {
 
     // MARK - Oulet
@@ -36,8 +40,11 @@ class PageMenuVC: ViewController {
     private var pageMenu: CAPSPageMenu?
     private var controllers = [UIViewController]()
 
+    private var homeNavigationController: UINavigationController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: .pushPlayerVC, name: Strings.pushPlayerVC, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +59,8 @@ class PageMenuVC: ViewController {
         let trendingVC = TrendingVC.vc()
         let favoriteVC = FavoriteVC.vc()
 
+//        homeNavigationController = UINavigationController(rootViewController: homeVC)
+//        homeVC.navigationController?.navigationBarHidden = true
         // Set title for viewcontroller
         homeVC.title = ""
         trendingVC.title = ""
@@ -112,6 +121,13 @@ class PageMenuVC: ViewController {
             trendingIcon.image = UIImage(assetIdentifier: .Trending)
             favoriteIcon.image = UIImage(assetIdentifier: .FavoriteActive)
             titleLabel.text = Strings.favoriteTitle
+        }
+    }
+
+    @objc func pushPlayerVC(notification: NSNotificationCenter) {
+        let playerVC = PlayerVC.vc()
+        self.presentViewController(playerVC, animated: true) {
+
         }
     }
 }
