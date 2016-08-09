@@ -26,31 +26,31 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-UB-Wpz" userLabel="Down">
-                            <rect key="frame" x="15" y="11" width="21" height="21"/>
+                            <rect key="frame" x="15" y="11" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="fcM-UB-Wpz" secondAttribute="height" multiplier="1:1" id="JtT-Jj-gOS"/>
                             </constraints>
-                            <state key="normal" backgroundImage="Dot"/>
+                            <state key="normal" backgroundImage="Down"/>
                             <connections>
                                 <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="7m5-6Z-c04"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-92-TSn" userLabel="Search Key">
-                            <rect key="frame" x="56" y="7" width="230" height="30"/>
+                            <rect key="frame" x="57" y="7" width="230" height="30"/>
                             <color key="textColor" red="0.65098039220000004" green="0.66666666669999997" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxE-Kn-OUe">
-                            <rect key="frame" x="322" y="8" width="43" height="28"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <rect key="frame" x="314" y="6" width="51" height="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Search"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="VEF-92-TSn" firstAttribute="leading" secondItem="fcM-UB-Wpz" secondAttribute="trailing" constant="20" id="4ZK-RK-jbr"/>
-                        <constraint firstItem="fcM-UB-Wpz" firstAttribute="height" secondItem="dkA-zT-Yfe" secondAttribute="height" multiplier="21/44" id="5zt-qX-JMx"/>
+                        <constraint firstItem="fcM-UB-Wpz" firstAttribute="height" secondItem="dkA-zT-Yfe" secondAttribute="height" multiplier="22/44" id="5zt-qX-JMx"/>
                         <constraint firstAttribute="height" constant="44" id="7Lc-4O-AgC"/>
                         <constraint firstItem="fcM-UB-Wpz" firstAttribute="leading" secondItem="dkA-zT-Yfe" secondAttribute="leading" constant="15" id="ENL-AZ-2Nc"/>
                         <constraint firstItem="VEF-92-TSn" firstAttribute="top" secondItem="dkA-zT-Yfe" secondAttribute="top" constant="7" id="Hyt-dl-mdb"/>
@@ -87,6 +87,6 @@
     </objects>
     <resources>
         <image name="BgNavigation" width="250" height="71"/>
-        <image name="Dot" width="14" height="14"/>
+        <image name="Down" width="20" height="20"/>
     </resources>
 </document>

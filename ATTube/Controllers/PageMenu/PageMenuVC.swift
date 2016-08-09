@@ -14,6 +14,7 @@ private extension CGFloat {
     static let menuHeight: CGFloat = 44
     static let menuItemWidth: CGFloat = kScreenSize.width / 3
     static let selectionIndicatorHeight: CGFloat = 4
+    static let pageMenuHeight: CGFloat = 603 * Ratio.widthIPhone6
 }
 
 enum MenuItems: Int {
@@ -36,6 +37,8 @@ class PageMenuVC: ViewController {
     private var pageMenu: CAPSPageMenu?
     private var controllers = [UIViewController]()
 
+    private var homeNavigationController: UINavigationController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -51,6 +54,9 @@ class PageMenuVC: ViewController {
         let homeVC = HomeVC.vc()
         let trendingVC = TrendingVC.vc()
         let favoriteVC = FavoriteVC.vc()
+
+        homeVC.delgate = self
+        trendingVC.delegate = self
 
         // Set title for viewcontroller
         homeVC.title = ""
@@ -77,7 +83,7 @@ class PageMenuVC: ViewController {
         ]
 
         let yPageMenu = menuView.height + menuView.originY - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
-        let pageMenuSize = CGSize(width: view.width, height: 603 * Ratio.widthIPhone6)
+        let pageMenuSize = CGSize(width: view.width, height: .pageMenuHeight)
         pageMenu = CAPSPageMenu(viewControllers: controllers,
             frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: pageMenuSize),
             pageMenuOptions: parameters)
@@ -132,5 +138,13 @@ extension PageMenuVC: CAPSPageMenuDelegate {
 
     func didMoveToPage(controller: UIViewController, index: Int) {
 
+    }
+}
+
+extension PageMenuVC: PlayerVCDelegate {
+    func presentViewController() {
+        let player = PlayerVC()
+        self.presentViewController(player, animated: true) {
+        }
     }
 }

@@ -1,19 +1,20 @@
 //
-//  TableViewCell.swift
+//  PlayerCell.swift
 //  ATTube
 //
-//  Created by Asiantech1 on 8/3/16.
+//  Created by Asiantech1 on 8/8/16.
 //  Copyright © 2016 at. All rights reserved.
 //
 
 import UIKit
 
-class TrendingCell: UITableViewCell {
+private extension CGFloat {
+    static let cellHeight: CGFloat = 110 * Ratio.widthIPhone6
+}
 
-    // MARK - outlet
-    @IBOutlet private weak var photoImageView: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var durationLabel: UILabel!
+class PlayerCell: UITableViewCell {
+
+    @IBOutlet private weak var videoNameLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
 
@@ -28,18 +29,16 @@ class TrendingCell: UITableViewCell {
 
     func configCellAtIndex(index: Int) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
-        selectionStyle = UITableViewCellSelectionStyle.None
     }
 
     static func getCellHeight() -> CGFloat {
-        return 255 * Ratio.widthIPhone6
+        return .cellHeight
     }
 
     private func autoFontSize() {
         let helveticaFont = HelveticaFont()
-        nameLabel.font = helveticaFont.Regular(18)
-        durationLabel.font = helveticaFont.Light(14)
-        descriptionLabel.font = helveticaFont.Regular(13)
-        totalViewsLabel.font = helveticaFont.Regular(13)
+        videoNameLabel.font = helveticaFont.Regular(20)
+        descriptionLabel.font = helveticaFont.Regular(14)
+        totalViewsLabel.font = helveticaFont.Regular(14)
     }
 }

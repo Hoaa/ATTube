@@ -26,7 +26,6 @@ class FavoriteVC: ViewController {
     override func configUI() {
         tableView.registerNib(FavoriteCell)
     }
-
     override func loadData() { }
 }
 

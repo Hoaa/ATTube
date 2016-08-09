@@ -28,8 +28,7 @@ class SearchVC: ViewController {
         searchTextField.becomeFirstResponder()
     }
 
-    override func loadData() {
-    }
+    override func loadData() { }
 
     @IBAction private func dismissViewController(sender: UIButton) {
         view.endEditing(true)

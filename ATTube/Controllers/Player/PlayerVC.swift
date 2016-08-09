@@ -1,24 +1,29 @@
 //
-//  TrendingVC.swift
+//  PlayerVC.swift
 //  ATTube
 //
-//  Created by Asiantech1 on 8/1/16.
+//  Created by Asiantech1 on 8/8/16.
 //  Copyright © 2016 at. All rights reserved.
 //
 
 import UIKit
 import SVPullToRefresh
 
-class TrendingVC: ViewController {
+protocol PlayerVCDelegate {
+    func presentViewController()
+}
 
-    // MARK: - Outlet
+class PlayerVC: ViewController {
+
     @IBOutlet private weak var videosTableView: UITableView!
 
-    // MARK: - Property
-    var delegate: PlayerVCDelegate?
+    @IBOutlet private weak var videoNameLabel: UILabel!
+    @IBOutlet private weak var totalViewsLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        autoFontSize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,8 +32,9 @@ class TrendingVC: ViewController {
 
     // MARK - Init UI & Data
     override func configUI() {
-        // Register xib for cell
-        videosTableView.registerNib(TrendingCell)
+        videosTableView.registerNib(PlayerCell)
+        videosTableView.dataSource = self
+        videosTableView.delegate = self
 
         // setup pull-to-refresh
         videosTableView.addPullToRefreshWithActionHandler {
@@ -42,8 +48,6 @@ class TrendingVC: ViewController {
 
         configPullToRefreshView()
     }
-
-    override func loadData() { }
 
     // MARK: - Private function
     private func configPullToRefreshView() {
@@ -66,26 +70,33 @@ class TrendingVC: ViewController {
             self.videosTableView.infiniteScrollingView.stopAnimating()
         }
     }
+
+    private func autoFontSize() {
+        let helveticaFont = HelveticaFont()
+        videoNameLabel.font = helveticaFont.Regular(20)
+        totalViewsLabel.font = helveticaFont.Light(14)
+        descriptionLabel.font = helveticaFont.Regular(14)
+    }
+
+    @IBAction private func dismissViewController(sender: UIButton) {
+        dismissViewControllerAnimated(true) { }
+    }
 }
 
 // MARK: - UITableviewDataSource, UITableViewDelegate
-extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
+extension PlayerVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let trendingCell = tableView.dequeue(TrendingCell)
-        trendingCell.configCellAtIndex(indexPath.row)
-        return trendingCell
+        let playerCell = tableView.dequeue(PlayerCell)
+        playerCell.configCellAtIndex(indexPath.row)
+        return playerCell
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return TrendingCell.getCellHeight()
-    }
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.presentViewController()
+        return PlayerCell.getCellHeight()
     }
 }
