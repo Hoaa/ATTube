@@ -31,7 +31,7 @@ class SearchVC: ViewController {
     override func loadData() {
     }
 
-    @IBAction func dismissViewController(sender: UIButton) {
+    @IBAction private func dismissViewController(sender: UIButton) {
         view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
