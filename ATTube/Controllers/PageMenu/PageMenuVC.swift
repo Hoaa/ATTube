@@ -14,6 +14,7 @@ private extension CGFloat {
     static let menuHeight: CGFloat = 44
     static let menuItemWidth: CGFloat = kScreenSize.width / 3
     static let selectionIndicatorHeight: CGFloat = 4
+    static let pageMenuHeight: CGFloat = 603 * Ratio.widthIPhone6
 }
 
 enum MenuItems: Int {
@@ -57,8 +58,6 @@ class PageMenuVC: ViewController {
         homeVC.delgate = self
         trendingVC.delegate = self
 
-//        homeNavigationController = UINavigationController(rootViewController: homeVC)
-//        homeVC.navigationController?.navigationBarHidden = true
         // Set title for viewcontroller
         homeVC.title = ""
         trendingVC.title = ""
@@ -84,7 +83,7 @@ class PageMenuVC: ViewController {
         ]
 
         let yPageMenu = menuView.height + menuView.originY - CGFloat.menuHeight + CGFloat.selectionIndicatorHeight
-        let pageMenuSize = CGSize(width: view.width, height: 603 * Ratio.widthIPhone6)
+        let pageMenuSize = CGSize(width: view.width, height: .pageMenuHeight)
         pageMenu = CAPSPageMenu(viewControllers: controllers,
             frame: CGRect(origin: CGPoint(x: 0, y: yPageMenu), size: pageMenuSize),
             pageMenuOptions: parameters)
