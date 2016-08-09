@@ -78,7 +78,7 @@ class PlayerVC: ViewController {
         descriptionLabel.font = helveticaFont.Regular(14)
     }
 
-    @IBAction func dismissViewController(sender: UIButton) {
+    @IBAction private func dismissViewController(sender: UIButton) {
         dismissViewControllerAnimated(true) { }
     }
 }

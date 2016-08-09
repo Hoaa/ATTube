@@ -9,7 +9,7 @@
 import UIKit
 
 private extension CGFloat {
-    static let cellHeight: CGFloat = 110
+    static let cellHeight: CGFloat = 110 * Ratio.widthIPhone6
 }
 
 class PlayerCell: UITableViewCell {
@@ -32,7 +32,7 @@ class PlayerCell: UITableViewCell {
     }
 
     static func getCellHeight() -> CGFloat {
-        return CGFloat.cellHeight * Ratio.widthIPhone6
+        return .cellHeight
     }
 
     private func autoFontSize() {

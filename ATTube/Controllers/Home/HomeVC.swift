@@ -26,10 +26,6 @@ class HomeVC: ViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func viewDidDisappear(animated: Bool) {
-
-    }
-
     // MARK - Init UI & Data
     override func configUI() {
         videosTableView.registerNib(HomeCell)
