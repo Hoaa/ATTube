@@ -10,8 +10,8 @@ import UIKit
 
 class SearchVC: ViewController {
 
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchResultTableView: UITableView!
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var searchResultTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
