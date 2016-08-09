@@ -50,7 +50,7 @@ class PageMenuVC: ViewController {
     // MARK - Init UI & Data
     override func configUI() {
         navigationController?.navigationBar.hidden = true
-
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         let homeVC = HomeVC.vc()
         let trendingVC = TrendingVC.vc()
         let favoriteVC = FavoriteVC.vc()
