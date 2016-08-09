@@ -115,6 +115,13 @@ class PageMenuVC: ViewController {
 
         }
     }
+
+    // MARK: - IBAction
+    @IBAction func showSearchVC(sender: UIButton) {
+        let search = SearchVC.vc()
+        presentViewController(search, animated: false, completion: nil)
+    }
+
 }
 
 extension PageMenuVC: CAPSPageMenuDelegate {

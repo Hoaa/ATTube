@@ -37,13 +37,16 @@
                                     <color key="textColor" red="0.96078431372549022" green="0.82745098039215681" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-Ec-3g5">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-Ec-3g5" userLabel="search">
                                     <rect key="frame" x="343" y="31" width="22" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="22" id="TVw-T7-prM"/>
                                         <constraint firstAttribute="height" constant="22" id="qAb-Xe-pcI"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="Search"/>
+                                    <connections>
+                                        <action selector="showSearchVC:" destination="-1" eventType="touchUpInside" id="CXD-nP-HGc"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -174,7 +177,7 @@
                 <constraint firstAttribute="bottom" secondItem="feM-7a-D38" secondAttribute="bottom" id="yuh-ZR-KT9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="450.5" y="384.5"/>
+            <point key="canvasLocation" x="-259.5" y="-17.5"/>
         </view>
     </objects>
     <resources>
