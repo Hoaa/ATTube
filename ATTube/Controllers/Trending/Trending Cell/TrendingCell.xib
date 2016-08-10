@@ -29,13 +29,13 @@
                                         <rect key="frame" x="0.0" y="161" width="345" height="31"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUITS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXh-L9-yAk" userLabel="Name Video">
-                                        <rect key="frame" x="0.0" y="161" width="52" height="31"/>
+                                        <rect key="frame" x="0.0" y="161" width="270" height="31"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCU-B9-T6e" userLabel="Time">
-                                        <rect key="frame" x="317" y="161" width="28" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCU-B9-T6e" userLabel="duration">
+                                        <rect key="frame" x="298" y="161" width="47" height="31"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -100,6 +100,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="D0Y-R9-b68" secondAttribute="bottom" id="GZ3-rc-SfK"/>
+                            <constraint firstItem="VXh-L9-yAk" firstAttribute="width" secondItem="bgS-JN-RsG" secondAttribute="width" multiplier="270/345" id="IWU-ef-d1P"/>
                             <constraint firstItem="CEU-J6-5E2" firstAttribute="height" secondItem="bgS-JN-RsG" secondAttribute="height" multiplier="192/240" id="N3S-My-AdB"/>
                             <constraint firstAttribute="trailing" secondItem="CEU-J6-5E2" secondAttribute="trailing" id="RWQ-du-sRP"/>
                             <constraint firstItem="D0Y-R9-b68" firstAttribute="top" secondItem="CEU-J6-5E2" secondAttribute="bottom" constant="5" id="U4I-bi-8js"/>

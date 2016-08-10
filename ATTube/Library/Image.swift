@@ -11,7 +11,7 @@ import UIKit
 extension UIImage {
 
     enum AssetIdentifier: String {
-        case Home, HomeActive, Trending, TrendingActive, Favorite, FavoriteActive, BgNavigation, Search
+        case Home, HomeActive, Trending, TrendingActive, Favorite, FavoriteActive, BgNavigation, Search, BgHomeCell
     }
 
     convenience init!(assetIdentifier: AssetIdentifier) {

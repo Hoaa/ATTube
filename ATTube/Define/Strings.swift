@@ -16,4 +16,10 @@ struct Strings {
     static let favoriteTitle = "FAVORITE"
 
     static let pushPlayerVC = "pushPlayerVC"
+
+    static let baseURLString = "https://www.googleapis.com/youtube/v3"
+    static let key = "AIzaSyDSiZgWjra0czA4qY1K2oKcEqPDu6J_wwM"
+
+    static let trendingPart = "snippet,contentDetails,statistics"
+    static let trendingChart = "mostPopular"
 }

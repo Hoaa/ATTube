@@ -10,20 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		configUI()
-		loadData()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadData()
+        configUI()
+    }
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-	}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
-	// MARK - Init UI & Data
-	func configUI() {
-	}
+    // MARK - Init UI & Data
+    func configUI() {
+    }
 
-	func loadData() {
-	}
+    func loadData() {
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+
+    func showMessage(title: String, message: String) {
+        let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertcontroller.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            alertcontroller.dismissViewControllerAnimated(true, completion: nil)
+            }))
+        presentViewController(alertcontroller, animated: true, completion: nil)
+    }
 }

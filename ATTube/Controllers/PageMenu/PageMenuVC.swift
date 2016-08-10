@@ -37,10 +37,9 @@ class PageMenuVC: ViewController {
     private var pageMenu: CAPSPageMenu?
     private var controllers = [UIViewController]()
 
-    private var homeNavigationController: UINavigationController!
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +49,7 @@ class PageMenuVC: ViewController {
     // MARK - Init UI & Data
     override func configUI() {
         navigationController?.navigationBar.hidden = true
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
 
         let homeVC = HomeVC.vc()
         let trendingVC = TrendingVC.vc()
