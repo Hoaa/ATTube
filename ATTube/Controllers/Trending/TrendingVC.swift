@@ -38,19 +38,19 @@ class TrendingVC: ViewController {
 
         // setup pull-to-refresh
         videosTableView.addPullToRefreshWithActionHandler {
-            self.handleRefresh()
+            self.loadVideos(isRefresh: true)
         }
 
         // setup infinite scrolling
         videosTableView.addInfiniteScrollingWithActionHandler {
-            self.handleLoadMore()
+            self.loadVideos(isRefresh: false)
         }
 
         configPullToRefreshView()
     }
 
     override func loadData() {
-        handleRefresh()
+        self.loadVideos(isRefresh: true)
     }
 
     // MARK: - Private function
@@ -59,51 +59,33 @@ class TrendingVC: ViewController {
         videosTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
     }
 
-    private func handleRefresh() {
-
+    private func loadVideos(isRefresh refresh: Bool) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        APIManager.sharedInstance.getTrendingVideos(limit, regionCode: regionCode, nextPageToken: nil) {
+        if refresh {
+            nextPageToken = nil
+            trendingVideos.removeAll()
+            videosTableView.reloadData()
+        }
+        APIManager.sharedInstance.getTrendingVideos(limit, regionCode: regionCode, nextPageToken: nextPageToken) {
             (videos, nextPageToken, error) in
-
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
             self.videosTableView.pullToRefreshView.stopAnimating()
+            self.videosTableView.infiniteScrollingView.stopAnimating()
 
             if let videos = videos where error == nil {
                 self.nextPageToken = nextPageToken
                 self.isLoadMore = nextPageToken == nil ? false : true
-                self.trendingVideos.removeAll()
                 self.trendingVideos.appendContentsOf(videos)
-                self.videosTableView.reloadData()
-            }
-        }
-    }
 
-    private func handleLoadMore() {
-        if isLoadMore {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            APIManager.sharedInstance.getTrendingVideos(limit, regionCode: regionCode, nextPageToken: nextPageToken) {
-                (videos, nextPageToken, error) in
-
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                self.videosTableView.infiniteScrollingView.stopAnimating()
-
-                if let videos = videos where error == nil {
-                    self.nextPageToken = nextPageToken
-                    self.isLoadMore = nextPageToken == nil ? false : true
-                    self.trendingVideos.appendContentsOf(videos)
-
-                    self.videosTableView.beginUpdates()
-                    var indexPaths = [NSIndexPath]()
-                    for row in (self.trendingVideos.count - videos.count)..<self.trendingVideos.count {
-                        indexPaths.append(NSIndexPath(forRow: row, inSection: 0))
-                    }
-                    self.videosTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-                    self.videosTableView.endUpdates()
-
+                self.videosTableView.beginUpdates()
+                var indexPaths = [NSIndexPath]()
+                for row in (self.trendingVideos.count - videos.count)..<self.trendingVideos.count {
+                    indexPaths.append(NSIndexPath(forRow: row, inSection: 0))
                 }
+                self.videosTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                self.videosTableView.endUpdates()
             }
-        } else {
-            self.videosTableView.infiniteScrollingView.stopAnimating()
         }
     }
 }

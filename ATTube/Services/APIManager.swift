@@ -11,34 +11,34 @@ import Alamofire
 import ObjectMapper
 
 typealias APIComplete = (videos: [Video]?, nextPageToken: String?, error: NSError?) -> Void
+typealias APISuggestVideosNameComplete = (videosName: [String], error: NSError?) -> Void
 
 enum Router: URLRequestConvertible {
     static var OAuthToken: String?
 
     case Trending(maxResults: Int, regionCode: String, nextPageToken: String?)
 
-    var method: Alamofire.Method {
+    private var method: Alamofire.Method {
         switch self {
         case .Trending:
             return .GET
         }
     }
 
-    var path: String {
+    private var path: String {
         switch self {
         case .Trending:
             return "/videos"
         }
     }
 
-    var parameter: [String: AnyObject] {
+    private var parameter: [String: AnyObject] {
         var parameters = [String: AnyObject]()
         parameters["key"] = Strings.key
-        parameters["part"] = Strings.trendingPart
 
         switch self {
-
         case .Trending(let maxResults, let regionCode, let nextPageToken):
+            parameters["part"] = Strings.trendingPart
             parameters["chart"] = Strings.trendingChart
             parameters["maxResults"] = maxResults
             parameters["regionCode"] = regionCode
@@ -58,7 +58,6 @@ enum Router: URLRequestConvertible {
         if let token = Router.OAuthToken {
             mutableURLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
-
         switch self {
         case .Trending:
             return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameter).0
@@ -67,6 +66,8 @@ enum Router: URLRequestConvertible {
 }
 
 class APIManager {
+
+    private var searchRequest: Alamofire.Request?
 
     class var sharedInstance: APIManager {
         struct Static {
@@ -84,29 +85,29 @@ class APIManager {
             // do your task
             Alamofire.request(Router.Trending(maxResults: maxResults, regionCode: regionCode, nextPageToken: nextPageToken))
                 .responseJSON(completionHandler: { (response) in
-                    switch response.result {
-                    case .Success:
-                        var videos: [Video] = []
-                        if let JSON = response.result.value as? NSDictionary {
-                            let nextPageToken = JSON["nextPageToken"] as? String
+                    self.executeResponse(response, completionHanlder: completionHanlder)
+            })
+        }
+    }
 
-                            if let items = JSON["items"] as? NSArray {
-                                for item in items {
-                                    if let video = Mapper<Video>().map(item) {
-                                        videos.append(video)
-                                    }
-                                }
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    completionHanlder(videos: videos, nextPageToken: nextPageToken, error: nil)
-                                }
-                            }
-                        }
-                    case .Failure(let error):
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completionHanlder(videos: nil, nextPageToken: nil, error: error)
+    private func executeResponse(response: Response<AnyObject, NSError>, completionHanlder: APIComplete) {
+        switch response.result {
+        case .Success:
+            var videos: [Video] = []
+            if let JSON = response.result.value as? NSDictionary {
+                let nextPageToken = JSON["nextPageToken"] as? String
+                print("API: \(nextPageToken)")
+                if let items = JSON["items"] as? NSArray {
+                    for item in items {
+                        if let video = Mapper<Video>().map(item) {
+                            videos.append(video)
                         }
                     }
-            })
+                    completionHanlder(videos: videos, nextPageToken: nextPageToken, error: nil)
+                }
+            }
+        case .Failure(let error):
+            completionHanlder(videos: nil, nextPageToken: nil, error: error)
         }
     }
 }
