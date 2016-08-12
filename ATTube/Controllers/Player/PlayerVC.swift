@@ -22,7 +22,6 @@ class PlayerVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        autoFontSize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +30,7 @@ class PlayerVC: ViewController {
 
     // MARK - Init UI & Data
     override func configUI() {
+        autoFontSize()
         videosTableView.registerNib(PlayerCell)
         videosTableView.dataSource = self
         videosTableView.delegate = self
