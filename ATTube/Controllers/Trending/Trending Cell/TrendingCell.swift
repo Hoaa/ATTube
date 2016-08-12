@@ -33,17 +33,17 @@ class TrendingCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configCellAtIndex(index: Int, With object: Video) {
+    func configCellAtIndex(index: Int, object: Video?) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
         selectionStyle = UITableViewCellSelectionStyle.None
 
-        if let thumbnailURLString = object.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
+        if let thumbnailURLString = object?.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
             photoImageView.sd_setImageWithURL(thumbnailURL, placeholderImage: UIImage(assetIdentifier: .BgHomeCell))
         }
-        nameLabel.text = object.title
-        durationLabel.text = shortTime(object.duration)
-        descriptionLabel.text = object.description
-        totalViewsLabel.text = viewCount(object.viewCount)
+        nameLabel.text = object?.title
+        durationLabel.text = HandleData.duration(object?.duration)
+        descriptionLabel.text = object?.description
+        totalViewsLabel.text = HandleData.viewCount(object?.viewCount)
     }
 
     static func getCellHeight() -> CGFloat {
@@ -56,51 +56,5 @@ class TrendingCell: UITableViewCell {
         durationLabel.font = helveticaFont.Light(14)
         descriptionLabel.font = helveticaFont.Regular(13)
         totalViewsLabel.font = helveticaFont.Regular(13)
-    }
-
-    private func shortTime(time: String?) -> String {
-        var result = ""
-        if let time = time {
-            var timeString = (time as NSString).substringFromIndex(2)
-            var items: [String] = []
-
-            if timeString.rangeOfString(.Hour) != nil {
-                items = timeString.componentsSeparatedByString(.Hour)
-                result += items.first!
-                timeString = items.last!
-            }
-
-            if timeString.rangeOfString(.Minute) == nil {
-                result += result.length == 0 ? "0" : ":00"
-            } else {
-                items = timeString.componentsSeparatedByString(.Minute)
-                result += result.length == 0 ? items.first! : (":" + (items.first!.length == 1 ? ("0" + items.first!) : items.first!))
-                timeString = items.last!
-            }
-
-            if timeString.rangeOfString(.Second) == nil {
-                result += ":00"
-            } else {
-                items = timeString.componentsSeparatedByString(.Second)
-                result += items.first!.length == 1 ? ":0\(items.first!)" : ":\(items.first!)"
-            }
-        }
-        return result
-    }
-
-    private func viewCount(viewCountString: String?) -> String {
-        if let viewCountString = viewCountString {
-            guard let viewCount = Int(viewCountString) else {
-                return ""
-            }
-            if viewCount > 999999 {
-                return (viewCountString as NSString).substringToIndex(viewCountString.length - 6) + "M Views"
-            } else if viewCount > 999 {
-                return (viewCountString as NSString).substringToIndex(viewCountString.length - 3) + "T Views"
-            } else {
-                return viewCountString
-            }
-        }
-        return ""
     }
 }

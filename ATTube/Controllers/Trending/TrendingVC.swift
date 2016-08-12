@@ -19,7 +19,6 @@ class TrendingVC: ViewController {
     private var trendingVideos: [Video] = []
 
     private var nextPageToken: String?
-    private var isLoadMore = true
     private var limit = 10
     private var regionCode = "VN"
 
@@ -75,7 +74,6 @@ class TrendingVC: ViewController {
 
             if let videos = videos where error == nil {
                 self.nextPageToken = nextPageToken
-                self.isLoadMore = nextPageToken == nil ? false : true
                 self.trendingVideos.appendContentsOf(videos)
 
                 self.videosTableView.beginUpdates()
@@ -100,7 +98,7 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let trendingCell = tableView.dequeue(TrendingCell)
         let video = trendingVideos[indexPath.row]
-        trendingCell.configCellAtIndex(indexPath.row, With: video)
+        trendingCell.configCellAtIndex(indexPath.row, object: video)
         return trendingCell
     }
 
