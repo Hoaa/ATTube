@@ -40,6 +40,10 @@ class HelveticaFont: CustomFont {
     func Light(fontSize: CGFloat) -> UIFont! {
         return CCFont(name, .Light, fontSize)
     }
+
+    func Bold(fontSize: CGFloat) -> UIFont! {
+        return CCFont(name, .Bold, fontSize)
+    }
 }
 
 enum FontName: String {

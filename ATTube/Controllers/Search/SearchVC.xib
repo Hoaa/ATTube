@@ -3,18 +3,105 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVC" customModule="ATTube" customModuleProvider="target">
             <connections>
+                <outlet property="messageLabel" destination="FcX-dd-8WO" id="vis-fC-6Jg"/>
+                <outlet property="searchBar" destination="Dmv-rF-7Lp" id="y1a-gy-Guz"/>
+                <outlet property="searchResultTableView" destination="aY0-sM-SJz" id="0n0-mn-eF9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BgNavigation" translatesAutoresizingMaskIntoConstraints="NO" id="wYd-jL-hMN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkA-zT-Yfe" userLabel="Navigation Bar">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-Tg-XYh">
+                            <rect key="frame" x="157" y="13" width="62" height="18"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="0.96078431372549022" green="0.82745098039215681" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-UB-Wpz" userLabel="Close">
+                            <rect key="frame" x="15" y="11" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="fcM-UB-Wpz" secondAttribute="height" multiplier="1:1" id="m9f-5t-CKi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" backgroundImage="Cancel"/>
+                            <connections>
+                                <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="7m5-6Z-c04"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fcM-UB-Wpz" firstAttribute="height" secondItem="dkA-zT-Yfe" secondAttribute="height" multiplier="22/44" id="0hK-PA-Qsu"/>
+                        <constraint firstItem="fcM-UB-Wpz" firstAttribute="centerY" secondItem="dkA-zT-Yfe" secondAttribute="centerY" id="1i2-gK-bHB"/>
+                        <constraint firstItem="71V-Tg-XYh" firstAttribute="centerY" secondItem="dkA-zT-Yfe" secondAttribute="centerY" id="MiT-yW-s43"/>
+                        <constraint firstItem="fcM-UB-Wpz" firstAttribute="leading" secondItem="dkA-zT-Yfe" secondAttribute="leading" constant="15" id="YLf-SF-8kw"/>
+                        <constraint firstAttribute="trailing" secondItem="fcM-UB-Wpz" secondAttribute="trailing" constant="10" id="cD4-qK-ADV"/>
+                        <constraint firstItem="71V-Tg-XYh" firstAttribute="centerX" secondItem="dkA-zT-Yfe" secondAttribute="centerX" id="dw1-ya-IhU"/>
+                        <constraint firstAttribute="height" constant="44" id="qLZ-Jh-d3r"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="cD4-qK-ADV"/>
+                        </mask>
+                    </variation>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-sM-SJz">
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                    <color key="backgroundColor" red="0.039215686274509803" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableView>
+                <searchBar contentMode="redraw" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="Dmv-rF-7Lp">
+                    <rect key="frame" x="5" y="64" width="365" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="barTintColor" red="0.039215686274509803" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                </searchBar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Videos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcX-dd-8WO" userLabel="message">
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                    <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="aY0-sM-SJz" secondAttribute="bottom" id="4Rp-eI-pJW"/>
+                <constraint firstItem="dkA-zT-Yfe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="8lf-Aq-IJb"/>
+                <constraint firstItem="Dmv-rF-7Lp" firstAttribute="top" secondItem="dkA-zT-Yfe" secondAttribute="bottom" id="ATS-vP-rtK"/>
+                <constraint firstItem="aY0-sM-SJz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IOA-sq-AdZ"/>
+                <constraint firstAttribute="trailing" secondItem="dkA-zT-Yfe" secondAttribute="trailing" id="Jqn-bz-z8C"/>
+                <constraint firstItem="dkA-zT-Yfe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="No2-gL-wyO"/>
+                <constraint firstItem="aY0-sM-SJz" firstAttribute="top" secondItem="Dmv-rF-7Lp" secondAttribute="bottom" id="QYz-BP-iNG"/>
+                <constraint firstAttribute="bottom" secondItem="FcX-dd-8WO" secondAttribute="bottom" id="X9B-oK-uiS"/>
+                <constraint firstAttribute="trailing" secondItem="aY0-sM-SJz" secondAttribute="trailing" id="XIh-SZ-dIM"/>
+                <constraint firstAttribute="trailing" secondItem="FcX-dd-8WO" secondAttribute="trailing" id="cVZ-7x-jZL"/>
+                <constraint firstItem="Dmv-rF-7Lp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="f7i-Iu-oq2"/>
+                <constraint firstAttribute="trailing" secondItem="Dmv-rF-7Lp" secondAttribute="trailing" constant="5" id="fnm-cc-K2W"/>
+                <constraint firstItem="FcX-dd-8WO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ggC-bt-Kum"/>
+                <constraint firstItem="FcX-dd-8WO" firstAttribute="height" secondItem="aY0-sM-SJz" secondAttribute="height" id="koF-3L-n3B"/>
+                <constraint firstItem="Dmv-rF-7Lp" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="44/667" id="oVv-Fx-5iP"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="580.5" y="401.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="BgNavigation" width="250" height="71"/>
+        <image name="Cancel" width="14" height="14"/>
+    </resources>
 </document>

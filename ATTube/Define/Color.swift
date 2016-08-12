@@ -16,9 +16,5 @@ struct Color {
     static let black20 = UIColor.RGB(20, 20, 20)
     static let clear = UIColor.clearColor()
     static let yellow = UIColor.RGB(245, 211, 40)
-
-    static let borderWhite = UIColor.whiteColor()
-    static let borderRed = UIColor.redColor()
-    static let borderGray = UIColor.RGB(192, 192, 192)
-    static let tabBarTint = UIColor.RGB(253, 178, 8)
+    static let white = UIColor.whiteColor()
 }

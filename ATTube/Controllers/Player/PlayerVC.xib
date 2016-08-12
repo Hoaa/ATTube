@@ -28,7 +28,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-BJ-swk" userLabel="Down">
-                            <rect key="frame" x="10" y="20" width="30" height="30"/>
+                            <rect key="frame" x="10" y="20" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="C0a-BJ-swk" secondAttribute="height" multiplier="1:1" id="RvY-QN-mCL"/>
                             </constraints>
@@ -116,7 +116,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="C0a-BJ-swk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="30/375" id="6C2-ro-s4H"/>
+                <constraint firstItem="C0a-BJ-swk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="22/375" id="6C2-ro-s4H"/>
                 <constraint firstItem="8E7-PK-6q2" firstAttribute="top" secondItem="gUr-0y-zDr" secondAttribute="bottom" id="7iO-e7-0V4"/>
                 <constraint firstItem="Eob-J5-7HM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IGk-Jv-DDc"/>
                 <constraint firstItem="Eob-J5-7HM" firstAttribute="top" secondItem="8E7-PK-6q2" secondAttribute="bottom" id="L4P-0F-aNg"/>
@@ -137,6 +137,6 @@
     <resources>
         <image name="BgHomeCell" width="250" height="140"/>
         <image name="Dot" width="14" height="14"/>
-        <image name="Down" width="30" height="30"/>
+        <image name="Down" width="14" height="14"/>
     </resources>
 </document>

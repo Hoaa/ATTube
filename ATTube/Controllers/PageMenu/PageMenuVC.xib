@@ -44,6 +44,9 @@
                                         <constraint firstAttribute="height" constant="22" id="qAb-Xe-pcI"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="Search"/>
+                                    <connections>
+                                        <action selector="showSerchVC:" destination="-1" eventType="touchUpInside" id="hoU-rk-EdL"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -174,7 +177,7 @@
                 <constraint firstAttribute="bottom" secondItem="feM-7a-D38" secondAttribute="bottom" id="yuh-ZR-KT9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="450.5" y="384.5"/>
+            <point key="canvasLocation" x="321.5" y="68.5"/>
         </view>
     </objects>
     <resources>
