@@ -16,7 +16,6 @@ protocol PlayerVCDelegate {
 class PlayerVC: ViewController {
 
     @IBOutlet private weak var videosTableView: UITableView!
-
     @IBOutlet private weak var videoNameLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!

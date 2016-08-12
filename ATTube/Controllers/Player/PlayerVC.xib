@@ -32,7 +32,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="C0a-BJ-swk" secondAttribute="height" multiplier="1:1" id="RvY-QN-mCL"/>
                             </constraints>
-                            <state key="normal" backgroundImage="Down">
+                            <state key="normal" backgroundImage="Back">
                                 <color key="titleColor" red="0.062745098039215685" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -131,12 +131,12 @@
                 <constraint firstItem="8E7-PK-6q2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="96/667" id="zhp-Vb-keH"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="444.5" y="377.5"/>
+            <point key="canvasLocation" x="191.5" y="386.5"/>
         </view>
     </objects>
     <resources>
+        <image name="Back" width="14" height="14"/>
         <image name="BgHomeCell" width="250" height="140"/>
         <image name="Dot" width="14" height="14"/>
-        <image name="Down" width="20" height="20"/>
     </resources>
 </document>

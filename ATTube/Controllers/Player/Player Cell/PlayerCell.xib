@@ -23,7 +23,7 @@
                         <rect key="frame" x="200" y="3" width="159" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BABILONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVN-3z-rvt">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="31"/>
+                                <rect key="frame" x="0.0" y="0.0" width="159" height="31"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                             <constraint firstItem="etG-g0-g2S" firstAttribute="height" secondItem="qug-lY-UFx" secondAttribute="height" multiplier="24/100" id="Iag-6J-a1D"/>
                             <constraint firstItem="oKH-0b-ZYt" firstAttribute="height" secondItem="qug-lY-UFx" secondAttribute="height" multiplier="40/100" id="RfY-yS-bWd"/>
                             <constraint firstItem="UW4-83-X06" firstAttribute="height" secondItem="qug-lY-UFx" secondAttribute="height" multiplier="21/100" id="TZX-gZ-Cv8"/>
+                            <constraint firstAttribute="trailing" secondItem="FVN-3z-rvt" secondAttribute="trailing" id="YgT-b4-HG9"/>
                             <constraint firstItem="oKH-0b-ZYt" firstAttribute="top" secondItem="FVN-3z-rvt" secondAttribute="bottom" constant="-5" id="aBP-5D-JZK"/>
                             <constraint firstItem="oKH-0b-ZYt" firstAttribute="leading" secondItem="qug-lY-UFx" secondAttribute="leading" id="aXV-W0-lB7"/>
                             <constraint firstAttribute="bottom" secondItem="etG-g0-g2S" secondAttribute="bottom" id="bok-Pf-8IG"/>
@@ -65,25 +66,37 @@
                             <constraint firstItem="etG-g0-g2S" firstAttribute="leading" secondItem="qug-lY-UFx" secondAttribute="leading" id="xZl-Fm-S3j"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri1-ft-ufx">
+                        <rect key="frame" x="160" y="80" width="28" height="21"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="40L-vm-Iuc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="3oy-VN-KQ5"/>
                     <constraint firstItem="40L-vm-Iuc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8kx-8T-Vxl"/>
                     <constraint firstItem="40L-vm-Iuc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="180/375" id="Jz7-2v-AKx"/>
+                    <constraint firstItem="Ri1-ft-ufx" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="21/110" id="NaO-Gs-MhS"/>
                     <constraint firstItem="qug-lY-UFx" firstAttribute="leading" secondItem="40L-vm-Iuc" secondAttribute="trailing" constant="10" id="OJf-Gl-gn6"/>
                     <constraint firstAttribute="bottom" secondItem="qug-lY-UFx" secondAttribute="bottom" constant="7" id="Rmj-4i-mXD"/>
                     <constraint firstItem="qug-lY-UFx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="e5G-P8-411"/>
                     <constraint firstAttribute="bottom" secondItem="40L-vm-Iuc" secondAttribute="bottom" constant="7" id="iYW-np-J5V"/>
+                    <constraint firstAttribute="bottom" secondItem="Ri1-ft-ufx" secondAttribute="bottom" constant="9" id="jFI-v4-jBQ"/>
                     <constraint firstAttribute="trailing" secondItem="qug-lY-UFx" secondAttribute="trailing" constant="16" id="kOI-bX-EgV"/>
+                    <constraint firstItem="qug-lY-UFx" firstAttribute="leading" secondItem="Ri1-ft-ufx" secondAttribute="trailing" constant="12" id="wge-wb-dNd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="oKH-0b-ZYt" id="ESA-vy-pwq"/>
+                <outlet property="durationLabel" destination="Ri1-ft-ufx" id="V7E-C1-0BN"/>
+                <outlet property="photoImageView" destination="40L-vm-Iuc" id="i3S-20-Ml9"/>
                 <outlet property="totalViewsLabel" destination="etG-g0-g2S" id="qHo-Wi-nQ8"/>
                 <outlet property="videoNameLabel" destination="FVN-3z-rvt" id="MPw-fB-pgg"/>
             </connections>
-            <point key="canvasLocation" x="403.5" y="311.5"/>
+            <point key="canvasLocation" x="118.5" y="323.5"/>
         </tableViewCell>
     </objects>
     <resources>
