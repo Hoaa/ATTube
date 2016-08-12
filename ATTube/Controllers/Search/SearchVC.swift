@@ -17,7 +17,6 @@ class SearchVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        autoFontSize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,18 +25,19 @@ class SearchVC: ViewController {
 
     // MARK - Init UI & Data
     override func configUI() {
+        autoFontSize()
+        searchResultTableView.registerNib(PlayerCell)
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
-        searchResultTableView.registerNib(PlayerCell)
 
         // setup pull-to-refresh
         searchResultTableView.addPullToRefreshWithActionHandler {
-            self.loadVideo(true)
+            self.loadVideo(isRefresh: true)
         }
 
         // setup infinite scrolling
         searchResultTableView.addInfiniteScrollingWithActionHandler {
-            self.loadVideo(false)
+            self.loadVideo(isRefresh: false)
         }
         configPullToRefreshView()
         searchTextField.becomeFirstResponder()
@@ -56,7 +56,7 @@ class SearchVC: ViewController {
         searchResultTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
     }
 
-    private func loadVideo(isRefresh: Bool) {
+    private func loadVideo(isRefresh refresh: Bool) {
     }
 
     @IBAction private func dismissViewController(sender: UIButton) {

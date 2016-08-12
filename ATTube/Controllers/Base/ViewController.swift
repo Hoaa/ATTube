@@ -10,20 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		configUI()
-		loadData()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configUI()
+        loadData()
+    }
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-	}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
-	// MARK - Init UI & Data
-	func configUI() {
-	}
+    // MARK - Init UI & Data
+    func configUI() {
+    }
 
-	func loadData() {
-	}
+    func loadData() {
+    }
 }
