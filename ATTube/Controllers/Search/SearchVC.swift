@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import MapKit
+import SVPullToRefresh
 
 class SearchVC: ViewController {
+
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var searchResultTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +25,58 @@ class SearchVC: ViewController {
 
     // MARK - Init UI & Data
     override func configUI() {
+        autoFontSize()
+        searchResultTableView.registerNib(PlayerCell)
+        searchResultTableView.dataSource = self
+        searchResultTableView.delegate = self
+
+        // setup pull-to-refresh
+        searchResultTableView.addPullToRefreshWithActionHandler {
+            self.loadVideo(isRefresh: true)
+        }
+
+        // setup infinite scrolling
+        searchResultTableView.addInfiniteScrollingWithActionHandler {
+            self.loadVideo(isRefresh: false)
+        }
+        configPullToRefreshView()
+        searchTextField.becomeFirstResponder()
     }
 
-    override func loadData() {
+    override func loadData() { }
+
+    // MARK: - Private function
+    private func autoFontSize() {
+        let helveticaFont = HelveticaFont()
+        searchTextField.font = helveticaFont.Light(17)
+    }
+
+    private func configPullToRefreshView() {
+        searchResultTableView.pullToRefreshView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        searchResultTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+    }
+
+    private func loadVideo(isRefresh refresh: Bool) {
+    }
+
+    @IBAction private func dismissViewController(sender: UIButton) {
+        view.endEditing(true)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+}
+extension SearchVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return PlayerCell.getCellHeight()
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(PlayerCell)
+        cell.configCellAtIndex(indexPath.row)
+        return cell
     }
 }

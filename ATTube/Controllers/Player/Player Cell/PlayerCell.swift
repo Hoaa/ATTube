@@ -14,9 +14,11 @@ private extension CGFloat {
 
 class PlayerCell: UITableViewCell {
 
+    @IBOutlet private weak var photoImageView: UIImageView!
     @IBOutlet private weak var videoNameLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,5 +42,6 @@ class PlayerCell: UITableViewCell {
         videoNameLabel.font = helveticaFont.Regular(20)
         descriptionLabel.font = helveticaFont.Regular(14)
         totalViewsLabel.font = helveticaFont.Regular(14)
+        durationLabel.font = helveticaFont.Bold(14)
     }
 }
