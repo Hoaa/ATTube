@@ -12,8 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         loadData()
+        configUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,5 +25,17 @@ class ViewController: UIViewController {
     }
 
     func loadData() {
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+
+    func showMessage(title: String, message: String) {
+        let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertcontroller.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            alertcontroller.dismissViewControllerAnimated(true, completion: nil)
+            }))
+        presentViewController(alertcontroller, animated: true, completion: nil)
     }
 }

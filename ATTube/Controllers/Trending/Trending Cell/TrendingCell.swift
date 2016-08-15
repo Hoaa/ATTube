@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import SDWebImage
+
+private extension String {
+    static let Hour = "H"
+    static let Minute = "M"
+    static let Second = "S"
+}
 
 class TrendingCell: UITableViewCell {
 
@@ -26,9 +33,17 @@ class TrendingCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configCellAtIndex(index: Int) {
+    func configCellAtIndex(index: Int, object: Video?) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
         selectionStyle = UITableViewCellSelectionStyle.None
+
+        if let thumbnailURLString = object?.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
+            photoImageView.sd_setImageWithURL(thumbnailURL, placeholderImage: UIImage(assetIdentifier: .BgHomeCell))
+        }
+        nameLabel.text = object?.title
+        durationLabel.text = HandleData.duration(object?.duration)
+        descriptionLabel.text = object?.description
+        totalViewsLabel.text = HandleData.viewCount(object?.viewCount)
     }
 
     static func getCellHeight() -> CGFloat {

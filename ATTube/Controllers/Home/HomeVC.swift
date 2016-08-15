@@ -43,7 +43,8 @@ class HomeVC: ViewController {
         configPullToRefreshView()
     }
 
-    override func loadData() { }
+    override func loadData() {
+    }
 
     // MARK: - Private function
     private func configPullToRefreshView() {

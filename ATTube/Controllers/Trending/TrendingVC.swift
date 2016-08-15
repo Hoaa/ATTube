@@ -16,6 +16,11 @@ class TrendingVC: ViewController {
 
     // MARK: - Property
     var delegate: PlayerVCDelegate?
+    private var trendingVideos: [Video] = []
+
+    private var nextPageToken: String?
+    private var limit = 10
+    private var regionCode = "VN"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +37,20 @@ class TrendingVC: ViewController {
 
         // setup pull-to-refresh
         videosTableView.addPullToRefreshWithActionHandler {
-            self.handleRefresh()
+            self.loadVideos(isRefresh: true)
         }
 
         // setup infinite scrolling
         videosTableView.addInfiniteScrollingWithActionHandler {
-            self.handleLoadMore()
+            self.loadVideos(isRefresh: false)
         }
 
         configPullToRefreshView()
     }
 
-    override func loadData() { }
+    override func loadData() {
+        self.loadVideos(isRefresh: true)
+    }
 
     // MARK: - Private function
     private func configPullToRefreshView() {
@@ -51,19 +58,32 @@ class TrendingVC: ViewController {
         videosTableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
     }
 
-    private func handleRefresh() {
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            print("refresh")
-            self.videosTableView.pullToRefreshView.stopAnimating()
+    private func loadVideos(isRefresh refresh: Bool) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        if refresh {
+            nextPageToken = nil
+            trendingVideos.removeAll()
+            videosTableView.reloadData()
         }
-    }
+        APIManager.sharedInstance.getTrendingVideos(limit, regionCode: regionCode, nextPageToken: nextPageToken) {
+            (videos, nextPageToken, error) in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
-    private func handleLoadMore() {
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            print("load more")
+            self.videosTableView.pullToRefreshView.stopAnimating()
             self.videosTableView.infiniteScrollingView.stopAnimating()
+
+            if let videos = videos where error == nil {
+                self.nextPageToken = nextPageToken
+                self.trendingVideos.appendContentsOf(videos)
+
+                self.videosTableView.beginUpdates()
+                var indexPaths = [NSIndexPath]()
+                for row in (self.trendingVideos.count - videos.count)..<self.trendingVideos.count {
+                    indexPaths.append(NSIndexPath(forRow: row, inSection: 0))
+                }
+                self.videosTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                self.videosTableView.endUpdates()
+            }
         }
     }
 }
@@ -72,12 +92,13 @@ class TrendingVC: ViewController {
 extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return trendingVideos.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let trendingCell = tableView.dequeue(TrendingCell)
-        trendingCell.configCellAtIndex(indexPath.row)
+        let video = trendingVideos[indexPath.row]
+        trendingCell.configCellAtIndex(indexPath.row, object: video)
         return trendingCell
     }
 
