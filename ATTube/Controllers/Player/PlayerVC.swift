@@ -91,7 +91,7 @@ extension PlayerVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let playerCell = tableView.dequeue(PlayerCell)
-        playerCell.configCellAtIndex(indexPath.row)
+        playerCell.configCellAtIndex(indexPath.row, object: nil)
         return playerCell
     }
 
