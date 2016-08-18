@@ -13,5 +13,6 @@ pod 'ObjectMapper', '~> 1.3'
 pod 'SVPullToRefresh'
 pod ‘PageMenu’
 pod ‘SDWebImage’
+pod 'RealmSwift'
 
 end
