@@ -29,8 +29,16 @@ class PlayerCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configCellAtIndex(index: Int) {
+    func configCellAtIndex(index: Int, object: Video?) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
+        videoNameLabel.text = object?.title ?? "Miley"
+        descriptionLabel.text = object?.description ?? "Description description  description  description  description "
+        totalViewsLabel.text = HandleData.viewCount(object?.viewCount) ?? "1M Views"
+        durationLabel.text = HandleData.duration(object?.duration) ?? "2:30"
+        
+        if let thumbnailURLString = object?.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
+            photoImageView.sd_setImageWithURL(thumbnailURL, placeholderImage: UIImage(assetIdentifier: .BgHomeCell))
+        }
     }
 
     static func getCellHeight() -> CGFloat {

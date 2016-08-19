@@ -143,6 +143,7 @@ extension TrendingVC: AddPlaylistDelegate {
                     let success = playlists[index].addVideo(self.trendingVideos[indexCell])
                     if success {
                         Alert.sharedInstance.showAlert(self, title: Strings.success, message: Strings.successMessage)
+                        NSNotificationCenter.defaultCenter().postNotificationName(Strings.notificationAddPlaylist, object: nil)
                     } else {
                         Alert.sharedInstance.showAlert(self, title: Strings.failure, message: Strings.failureMessage)
                     }

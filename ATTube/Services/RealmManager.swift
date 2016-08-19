@@ -20,6 +20,11 @@ class RealmManager {
         return playlistNames
     }
 
+    class func getAvailablePlaylists() -> Results<Playlist>? {
+        let playlistNames = realm?.objects(Playlist).filter("videos.@count > 0")
+        return playlistNames
+    }
+
     class func addPlaylist(name: String, finished: RealmComplete) {
 
         if let playlists = realm?.objects(Playlist) {
