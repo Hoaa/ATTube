@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -13,14 +13,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-C9-e67" userLabel="Info">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-9W-pix" userLabel="Button ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                <connections>
+                                    <action selector="didTapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IcK-jR-ZjB"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-YU-IHq" userLabel="Playlist Name">
-                                <rect key="frame" x="10" y="0.0" width="73" height="33"/>
+                                <rect key="frame" x="10" y="0.0" width="290" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="V8J-ba-kTz"/>
                                 </constraints>
@@ -39,17 +45,39 @@
                                     <constraint firstAttribute="width" secondItem="Ngv-1A-8Ah" secondAttribute="height" multiplier="1:1" id="4pa-sd-Ndg"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="More"/>
+                                <connections>
+                                    <action selector="didTapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HSJ-KR-TAR"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j5-Z5-NHH" userLabel="total video">
+                                <rect key="frame" x="325" y="7" width="9.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ngv-1A-8Ah" secondAttribute="trailing" constant="10" id="4er-OF-sRL"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="22/35" id="HXM-eg-j3J"/>
+                            <constraint firstItem="Ngv-1A-8Ah" firstAttribute="leading" secondItem="0j5-Z5-NHH" secondAttribute="trailing" constant="8" id="Keb-vP-XIE"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="top" secondItem="fYc-C9-e67" secondAttribute="top" id="LHo-b1-4de"/>
+                            <constraint firstItem="Lfw-9W-pix" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" id="NN0-3W-hxh"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="centerY" secondItem="LCN-YU-IHq" secondAttribute="centerY" id="Tuj-Ov-5MN"/>
+                            <constraint firstItem="0j5-Z5-NHH" firstAttribute="leading" secondItem="Lfw-9W-pix" secondAttribute="trailing" id="WY0-qQ-zbW"/>
+                            <constraint firstItem="LCN-YU-IHq" firstAttribute="width" secondItem="fYc-C9-e67" secondAttribute="width" multiplier="290/375" id="Xnd-RF-T86"/>
+                            <constraint firstAttribute="trailing" secondItem="Lfw-9W-pix" secondAttribute="trailing" id="Y6a-6v-T48"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="33/35" id="ZhD-Aj-4Fk"/>
+                            <constraint firstAttribute="bottom" secondItem="Lfw-9W-pix" secondAttribute="bottom" id="aGw-IB-Gsx"/>
+                            <constraint firstItem="0j5-Z5-NHH" firstAttribute="centerY" secondItem="fYc-C9-e67" secondAttribute="centerY" id="dit-Nk-tJh"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" constant="10" id="ggM-Hb-6IJ"/>
+                            <constraint firstItem="Lfw-9W-pix" firstAttribute="top" secondItem="fYc-C9-e67" secondAttribute="top" id="qdk-FE-6ei"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WY0-qQ-zbW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="shk-ab-Lmf">
                         <rect key="frame" x="0.0" y="35" width="375" height="144"/>
@@ -76,9 +104,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="shk-ab-Lmf" id="aCm-xm-oyo"/>
-                <outlet property="playlistNameLabel" destination="LCN-YU-IHq" id="33f-6Q-c1p"/>
+                <outlet property="playlistNameLabel" destination="LCN-YU-IHq" id="3YH-qP-ZAC"/>
+                <outlet property="totalVideoLabel" destination="0j5-Z5-NHH" id="JmF-W4-lUK"/>
             </connections>
-            <point key="canvasLocation" x="395.5" y="308"/>
+            <point key="canvasLocation" x="222.5" y="270.5"/>
         </tableViewCell>
     </objects>
     <resources>

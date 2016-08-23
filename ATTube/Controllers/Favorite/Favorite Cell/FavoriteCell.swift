@@ -8,6 +8,11 @@
 
 import UIKit
 import SwiftUtils
+import RealmSwift
+
+protocol FavoriteCellDelegate {
+    func playVideo(indexVideo: Int?, InPlaylist indexPlaylist: Int)
+}
 
 private extension CGFloat {
     static let collectionCellWidth: CGFloat = 180 * Ratio.widthIPhone6
@@ -17,12 +22,22 @@ private extension CGFloat {
     static let paddingLeft: CGFloat = 5 * Ratio.widthIPhone6
     static let paddingRight: CGFloat = 5 * Ratio.widthIPhone6
     static let paddingBottom: CGFloat = 0
+
+    static let cellHeight: CGFloat = 185 * Ratio.widthIPhone6
+    static let titleHeight: CGFloat = 35 * Ratio.widthIPhone6
 }
 
 class FavoriteCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playlistNameLabel: UILabel!
+
+    @IBOutlet weak var totalVideoLabel: UILabel!
+
+    var delegate: FavoriteCellDelegate?
+
+    private var playlist: Playlist? = nil
+    private var index = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +48,13 @@ class FavoriteCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configCellAtIndex(index: Int) {
+    func configCellAtIndex(index: Int, object: Playlist?) {
+        self.index = index
+        playlistNameLabel.text = object?.title
+        totalVideoLabel.text = "\(object?.videos.count ?? 0)"
+        playlist = object
+        collectionView.reloadData()
+
         collectionView.registerNib(FavoriteCollectionCell)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -41,24 +62,36 @@ class FavoriteCell: UITableViewCell {
     }
 
     static func getCellHeight() -> CGFloat {
-        return 185 * Ratio.widthIPhone6
+        return .cellHeight
     }
 
     private func autoFontSize() {
         let helveticaFont = HelveticaFont()
         playlistNameLabel.font = helveticaFont.Regular(18)
+        totalVideoLabel.font = helveticaFont.Regular(17)
     }
+
+    @IBAction func didTapMoreButton(sender: UIButton) {
+        delegate?.playVideo(nil, InPlaylist: index) }
+
 }
 
 // MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 extension FavoriteCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return playlist?.videos.count ?? 0
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeue(FavoriteCollectionCell.self, forIndexPath: indexPath)
+        let video = playlist?.videos[indexPath.row]
+        let favoriteCollectionCell = collectionView.dequeue(FavoriteCollectionCell.self, forIndexPath: indexPath)
+        favoriteCollectionCell.configCellAtIndex(indexPath.row, object: video)
+        return favoriteCollectionCell
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        delegate?.playVideo(indexPath.row, InPlaylist: index)
     }
 }
 

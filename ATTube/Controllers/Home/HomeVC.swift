@@ -15,8 +15,11 @@ class HomeVC: ViewController {
     // MARK - Outlet
     @IBOutlet private weak var videosTableView: UITableView!
 
+    @IBAction func close(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     // MARK:- Property
-    var delgate: PlayerVCDelegate?
+    var delegate: PlayerVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +94,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delgate?.presentViewController()
+        delegate?.playVideo(nil, InPlaylist: nil, isShowPlaylist: false)
     }
 }

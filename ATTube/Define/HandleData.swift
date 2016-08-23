@@ -56,7 +56,7 @@ class HandleData {
             if viewCount > 999999 {
                 return (viewCountString as NSString).substringToIndex(viewCountString.length - 6) + "M Views"
             } else if viewCount > 999 {
-                return (viewCountString as NSString).substringToIndex(viewCountString.length - 3) + "T Views"
+                return (viewCountString as NSString).substringToIndex(viewCountString.length - 3) + "K Views"
             } else {
                 return viewCountString
             }

@@ -96,9 +96,10 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let trendingCell = tableView.dequeue(TrendingCell)
         let video = trendingVideos[indexPath.row]
+        let trendingCell = tableView.dequeue(TrendingCell)
         trendingCell.configCellAtIndex(indexPath.row, object: video)
+        trendingCell.delegate = self
         return trendingCell
     }
 
@@ -107,6 +108,45 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.presentViewController()
+        delegate?.playVideo(nil, InPlaylist: nil, isShowPlaylist: false)
+    }
+}
+
+extension TrendingVC: AddPlaylistDelegate {
+
+    func showAlertPlaylist(indexCell: Int) {
+        var playlistNames = [String]()
+        let playlists = RealmManager.getAllPlaylist()
+        if let playlists = playlists {
+            for item in playlists {
+                playlistNames.append(item.title)
+            }
+        }
+
+        Alert.sharedInstance.showActionSheet(self,
+            title: Strings.addPlaylist,
+            message: Strings.messagePlaylist,
+            options: playlistNames) { (index, isCreate) in
+                if isCreate {
+                    Alert.sharedInstance.inputTextAlert(self, title: Strings.addNew, message: "", confirmHandler: { (text) in
+                        if text != "" {
+                            RealmManager.addPlaylist(text, finished: {
+                                self.showAlertPlaylist(indexCell)
+                            })
+                        }
+                    })
+                } else {
+                    guard let playlists = playlists, index = index else {
+                        return
+                    }
+                    let success = playlists[index].addVideo(self.trendingVideos[indexCell])
+                    if success {
+                        Alert.sharedInstance.showAlert(self, title: Strings.success, message: Strings.successMessage)
+                        NSNotificationCenter.defaultCenter().postNotificationName(Strings.notificationAddPlaylist, object: nil)
+                    } else {
+                        Alert.sharedInstance.showAlert(self, title: Strings.failure, message: Strings.failureMessage)
+                    }
+                }
+        }
     }
 }

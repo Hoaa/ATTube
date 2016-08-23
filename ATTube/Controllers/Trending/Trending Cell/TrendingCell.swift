@@ -15,6 +15,10 @@ private extension String {
     static let Second = "S"
 }
 
+protocol AddPlaylistDelegate {
+    func showAlertPlaylist(index: Int)
+}
+
 class TrendingCell: UITableViewCell {
 
     // MARK - outlet
@@ -23,6 +27,9 @@ class TrendingCell: UITableViewCell {
     @IBOutlet private weak var durationLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
+
+    var delegate: AddPlaylistDelegate?
+    private var index = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +41,7 @@ class TrendingCell: UITableViewCell {
     }
 
     func configCellAtIndex(index: Int, object: Video?) {
+        self.index = index
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
         selectionStyle = UITableViewCellSelectionStyle.None
 
@@ -42,7 +50,7 @@ class TrendingCell: UITableViewCell {
         }
         nameLabel.text = object?.title
         durationLabel.text = HandleData.duration(object?.duration)
-        descriptionLabel.text = object?.description
+        descriptionLabel.text = object?.describe
         totalViewsLabel.text = HandleData.viewCount(object?.viewCount)
     }
 
@@ -56,5 +64,9 @@ class TrendingCell: UITableViewCell {
         durationLabel.font = helveticaFont.Light(14)
         descriptionLabel.font = helveticaFont.Regular(13)
         totalViewsLabel.font = helveticaFont.Regular(13)
+    }
+
+    @IBAction func didTapMoreButton(sender: UIButton) {
+        delegate?.showAlertPlaylist(index)
     }
 }

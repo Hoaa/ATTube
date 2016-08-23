@@ -8,27 +8,35 @@
 
 import Foundation
 import ObjectMapper
-import Darwin
+import RealmSwift
 
-class Video: Mappable {
-    var id: String?
-    var channelID: String?
-    var title: String?
-    var description: String?
-    var defaultThumbnailURL: String?
-    var mediumThumbnailURL: String?
-    var highThumbnailURL: String?
-    var duration: String?
-    var viewCount: String?
+class Video: Object, Mappable {
+    dynamic var id: String?
+    dynamic var channelID: String?
+    dynamic var title: String?
+    dynamic var describe: String?
+    dynamic var defaultThumbnailURL: String?
+    dynamic var mediumThumbnailURL: String?
+    dynamic var highThumbnailURL: String?
+    dynamic var duration: String?
+    dynamic var viewCount: String?
 
-    required init?(_ map: Map) {
+    let owners = LinkingObjects(fromType: Playlist.self, property: "videos")
+    
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
 
+    required convenience init?(_ map: Map) {
+        self.init()
+    }
+    
     func mapping(map: Map) {
         self.id <- map["id"]
         self.channelID <- map["channelId"]
         self.title <- map["snippet.title"]
-        self.description <- map["snippet.description"]
+        self.describe <- map["snippet.description"]
         self.defaultThumbnailURL <- map["snippet.thumbnails.default.url"]
         self.mediumThumbnailURL <- map["snippet.thumbnails.medium.url"]
         self.highThumbnailURL <- map["snippet.thumbnails.high.url"]

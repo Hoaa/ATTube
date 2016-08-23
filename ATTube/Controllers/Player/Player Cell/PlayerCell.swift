@@ -32,10 +32,10 @@ class PlayerCell: UITableViewCell {
     func configCellAtIndex(index: Int, object: Video?) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
         videoNameLabel.text = object?.title ?? "Miley"
-        descriptionLabel.text = object?.description ?? "Description description  description  description  description "
+        descriptionLabel.text = object?.describe ?? "Description description  description  description  description "
         totalViewsLabel.text = HandleData.viewCount(object?.viewCount) ?? "1M Views"
         durationLabel.text = HandleData.duration(object?.duration) ?? "2:30"
-        
+
         if let thumbnailURLString = object?.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
             photoImageView.sd_setImageWithURL(thumbnailURL, placeholderImage: UIImage(assetIdentifier: .BgHomeCell))
         }
