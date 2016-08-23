@@ -9,9 +9,10 @@
 import UIKit
 import PageMenu
 import SwiftUtils
+import RealmSwift
 
 private extension CGFloat {
-    static let menuHeight: CGFloat = 44
+    static let menuHeight: CGFloat = 44 * Ratio.widthIPhone6
     static let menuItemWidth: CGFloat = kScreenSize.width / 3
     static let selectionIndicatorHeight: CGFloat = 4
     static let pageMenuHeight: CGFloat = 603 * Ratio.widthIPhone6
@@ -55,8 +56,17 @@ class PageMenuVC: ViewController {
         let trendingVC = TrendingVC.vc()
         let favoriteVC = FavoriteVC.vc()
 
-        homeVC.delgate = self
+        let homeNavi = UINavigationController(rootViewController: homeVC)
+        let trendingNavi = UINavigationController(rootViewController: trendingVC)
+        let favoriteNavi = UINavigationController(rootViewController: favoriteVC)
+
+        homeNavi.navigationBar.hidden = true
+        trendingNavi.navigationBar.hidden = true
+        favoriteNavi.navigationBar.hidden = true
+
+        homeVC.delegate = self
         trendingVC.delegate = self
+        favoriteVC.delegate = self
 
         // Set title for viewcontroller
         homeVC.title = ""
@@ -66,7 +76,7 @@ class PageMenuVC: ViewController {
         // Add into array
         controllers.append(homeVC)
         controllers.append(trendingVC)
-        controllers.append(favoriteVC)
+        controllers.append(favoriteNavi)
 
         let parameters: [CAPSPageMenuOption] = [
                 .MenuItemSeparatorWidth(0),
@@ -127,7 +137,6 @@ class PageMenuVC: ViewController {
         let search = SearchVC.vc()
         presentViewController(search, animated: false, completion: nil)
     }
-
 }
 
 extension PageMenuVC: CAPSPageMenuDelegate {
@@ -142,9 +151,8 @@ extension PageMenuVC: CAPSPageMenuDelegate {
 }
 
 extension PageMenuVC: PlayerVCDelegate {
-    func presentViewController() {
-        let player = PlayerVC()
-        self.presentViewController(player, animated: true) {
-        }
+    func playVideo(index: Int?, InPlaylist playlist: Playlist?, isShowPlaylist: Bool) {
+        let player = PlayerVC(index: index, playlist: playlist, isShowPlaylist: isShowPlaylist)
+        self.presentViewController(player, animated: true, completion: nil)
     }
 }

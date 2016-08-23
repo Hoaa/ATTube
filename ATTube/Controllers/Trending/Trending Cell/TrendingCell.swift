@@ -30,7 +30,7 @@ class TrendingCell: UITableViewCell {
 
     var delegate: AddPlaylistDelegate?
     private var index = 0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         autoFontSize()
@@ -65,8 +65,7 @@ class TrendingCell: UITableViewCell {
         descriptionLabel.font = helveticaFont.Regular(13)
         totalViewsLabel.font = helveticaFont.Regular(13)
     }
-    
-    
+
     @IBAction func didTapMoreButton(sender: UIButton) {
         delegate?.showAlertPlaylist(index)
     }

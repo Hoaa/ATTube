@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.4.1)
+  - MobilePlayer (1.1.5)
   - ObjectMapper (1.3.0)
   - PageMenu (1.2.9)
   - Realm (1.0.2):
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - MobilePlayer
   - ObjectMapper (~> 1.3)
   - PageMenu
   - RealmSwift
@@ -24,6 +26,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  MobilePlayer: 2fdc07a564fa89da65ff660f8fdcf06ab75f775d
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
@@ -32,6 +35,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftUtils: f4200309f3d12c3caee5601ff857c23aad360b81
 
-PODFILE CHECKSUM: 675dfbc61eaab1cca20bf35806108454bbb6fd89
+PODFILE CHECKSUM: cd43f842f46f85a4f0d058c4240d8117a960502c
 
 COCOAPODS: 1.0.1

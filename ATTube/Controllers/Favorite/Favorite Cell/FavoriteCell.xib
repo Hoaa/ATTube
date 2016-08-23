@@ -19,6 +19,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-C9-e67" userLabel="Info">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-9W-pix" userLabel="Button ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                <connections>
+                                    <action selector="didTapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IcK-jR-ZjB"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-YU-IHq" userLabel="Playlist Name">
                                 <rect key="frame" x="10" y="0.0" width="290" height="33"/>
                                 <constraints>
@@ -39,9 +45,12 @@
                                     <constraint firstAttribute="width" secondItem="Ngv-1A-8Ah" secondAttribute="height" multiplier="1:1" id="4pa-sd-Ndg"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="More"/>
+                                <connections>
+                                    <action selector="didTapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HSJ-KR-TAR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j5-Z5-NHH" userLabel="total video">
-                                <rect key="frame" x="325.5" y="7.5" width="9.5" height="20"/>
+                                <rect key="frame" x="325" y="7" width="9.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -53,12 +62,22 @@
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="22/35" id="HXM-eg-j3J"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="leading" secondItem="0j5-Z5-NHH" secondAttribute="trailing" constant="8" id="Keb-vP-XIE"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="top" secondItem="fYc-C9-e67" secondAttribute="top" id="LHo-b1-4de"/>
+                            <constraint firstItem="Lfw-9W-pix" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" id="NN0-3W-hxh"/>
                             <constraint firstItem="Ngv-1A-8Ah" firstAttribute="centerY" secondItem="LCN-YU-IHq" secondAttribute="centerY" id="Tuj-Ov-5MN"/>
+                            <constraint firstItem="0j5-Z5-NHH" firstAttribute="leading" secondItem="Lfw-9W-pix" secondAttribute="trailing" id="WY0-qQ-zbW"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="width" secondItem="fYc-C9-e67" secondAttribute="width" multiplier="290/375" id="Xnd-RF-T86"/>
+                            <constraint firstAttribute="trailing" secondItem="Lfw-9W-pix" secondAttribute="trailing" id="Y6a-6v-T48"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="height" secondItem="fYc-C9-e67" secondAttribute="height" multiplier="33/35" id="ZhD-Aj-4Fk"/>
+                            <constraint firstAttribute="bottom" secondItem="Lfw-9W-pix" secondAttribute="bottom" id="aGw-IB-Gsx"/>
                             <constraint firstItem="0j5-Z5-NHH" firstAttribute="centerY" secondItem="fYc-C9-e67" secondAttribute="centerY" id="dit-Nk-tJh"/>
                             <constraint firstItem="LCN-YU-IHq" firstAttribute="leading" secondItem="fYc-C9-e67" secondAttribute="leading" constant="10" id="ggM-Hb-6IJ"/>
+                            <constraint firstItem="Lfw-9W-pix" firstAttribute="top" secondItem="fYc-C9-e67" secondAttribute="top" id="qdk-FE-6ei"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WY0-qQ-zbW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="shk-ab-Lmf">
                         <rect key="frame" x="0.0" y="35" width="375" height="144"/>

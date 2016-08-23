@@ -58,4 +58,29 @@ class RealmManager {
         } catch { }
         return false
     }
+
+    class func deleteVideo(video: Video, inListVideo listVideo: List<Video>) -> Bool {
+        do {
+            try realm?.write({
+                for (index, item) in listVideo.enumerate() {
+                    if item == video {
+                        listVideo.removeAtIndex(index)
+                        break
+                    }
+                }
+            })
+            return true
+        } catch { }
+        return false
+    }
+
+    class func swapVideo(listVideo: List<Video>, between index1: Int, and index2: Int) -> Bool {
+        do {
+            try realm?.write({
+                listVideo.swap(index1, index2)
+            })
+            return true
+        } catch { }
+        return false
+    }
 }

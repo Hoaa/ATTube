@@ -44,4 +44,11 @@ struct Strings {
     static let successMessage = "The video has added"
 
     static let notificationAddPlaylist = "Add Playlist"
+    static let notificationUpdatePlaylist = "Update playlist after delete video"
+
+    static let deleteVideoSuccessMessage = "This video has been removed out of playlist"
+    static let deleteVideoFailureMessage = "Can not remove this video"
+
+    static let showMore = "Show more"
+    static let showLess = "Show less"
 }

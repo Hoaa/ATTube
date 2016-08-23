@@ -14,5 +14,6 @@ pod 'SVPullToRefresh'
 pod ‘PageMenu’
 pod ‘SDWebImage’
 pod 'RealmSwift'
+pod 'MobilePlayer'
 
 end

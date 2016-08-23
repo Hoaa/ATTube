@@ -27,4 +27,12 @@ class Playlist: Object {
         }
         return RealmManager.addVideo(video, Into: videos)
     }
+
+    func deleteVideo(video: Video) -> Bool {
+        return RealmManager.deleteVideo(video, inListVideo: videos)
+    }
+
+    func swapVideo(index1: Int, index2: Int) -> Bool {
+        return RealmManager.swapVideo(videos, between: index1, and: index2)
+    }
 }

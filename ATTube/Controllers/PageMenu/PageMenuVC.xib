@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -154,30 +154,22 @@
                         <constraint firstAttribute="trailing" secondItem="hUB-br-fXs" secondAttribute="trailing" id="oer-4e-4As"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BgNavigation" translatesAutoresizingMaskIntoConstraints="NO" id="feM-7a-D38">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BgNavigation" translatesAutoresizingMaskIntoConstraints="NO" id="cEi-Ke-Rve">
                     <rect key="frame" x="0.0" y="108" width="375" height="559"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="dLR-uA-8l3"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="dLR-uA-8l3"/>
-                        </mask>
-                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="XwC-8z-Tlb" secondAttribute="trailing" id="8Tw-TI-f2o"/>
-                <constraint firstAttribute="trailing" secondItem="feM-7a-D38" secondAttribute="trailing" id="C81-2Q-vOn"/>
-                <constraint firstItem="feM-7a-D38" firstAttribute="top" secondItem="XwC-8z-Tlb" secondAttribute="bottom" id="JJR-1W-TmS"/>
-                <constraint firstItem="feM-7a-D38" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QmJ-le-1N6"/>
+                <constraint firstItem="cEi-Ke-Rve" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QUM-MO-KgD"/>
                 <constraint firstItem="XwC-8z-Tlb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WmU-FU-Zli"/>
+                <constraint firstAttribute="trailing" secondItem="cEi-Ke-Rve" secondAttribute="trailing" id="aob-g7-bs8"/>
+                <constraint firstItem="cEi-Ke-Rve" firstAttribute="top" secondItem="XwC-8z-Tlb" secondAttribute="bottom" id="bg4-XW-5IB"/>
                 <constraint firstItem="XwC-8z-Tlb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cxN-4f-4Dl"/>
-                <constraint firstAttribute="bottom" secondItem="feM-7a-D38" secondAttribute="bottom" id="yuh-ZR-KT9"/>
+                <constraint firstAttribute="bottom" secondItem="cEi-Ke-Rve" secondAttribute="bottom" id="ovB-3Y-7eD"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="-259.5" y="-17.5"/>
+            <point key="canvasLocation" x="-625.5" y="-78.5"/>
         </view>
     </objects>
     <resources>

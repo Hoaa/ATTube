@@ -108,14 +108,13 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.presentViewController()
+        delegate?.playVideo(nil, InPlaylist: nil, isShowPlaylist: false)
     }
 }
 
 extension TrendingVC: AddPlaylistDelegate {
 
     func showAlertPlaylist(indexCell: Int) {
-
         var playlistNames = [String]()
         let playlists = RealmManager.getAllPlaylist()
         if let playlists = playlists {

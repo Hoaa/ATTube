@@ -10,6 +10,10 @@ import UIKit
 import SwiftUtils
 import RealmSwift
 
+protocol FavoriteCellDelegate {
+    func playVideo(indexVideo: Int?, InPlaylist indexPlaylist: Int)
+}
+
 private extension CGFloat {
     static let collectionCellWidth: CGFloat = 180 * Ratio.widthIPhone6
     static let minimumLineSpacing: CGFloat = 5 * Ratio.widthIPhone6
@@ -30,7 +34,10 @@ class FavoriteCell: UITableViewCell {
 
     @IBOutlet weak var totalVideoLabel: UILabel!
 
+    var delegate: FavoriteCellDelegate?
+
     private var playlist: Playlist? = nil
+    private var index = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +49,7 @@ class FavoriteCell: UITableViewCell {
     }
 
     func configCellAtIndex(index: Int, object: Playlist?) {
+        self.index = index
         playlistNameLabel.text = object?.title
         totalVideoLabel.text = "\(object?.videos.count ?? 0)"
         playlist = object
@@ -63,6 +71,9 @@ class FavoriteCell: UITableViewCell {
         totalVideoLabel.font = helveticaFont.Regular(17)
     }
 
+    @IBAction func didTapMoreButton(sender: UIButton) {
+        delegate?.playVideo(nil, InPlaylist: index) }
+
 }
 
 // MARK:- UICollectionViewDelegate, UICollectionViewDataSource
@@ -77,6 +88,10 @@ extension FavoriteCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let favoriteCollectionCell = collectionView.dequeue(FavoriteCollectionCell.self, forIndexPath: indexPath)
         favoriteCollectionCell.configCellAtIndex(indexPath.row, object: video)
         return favoriteCollectionCell
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        delegate?.playVideo(indexPath.row, InPlaylist: index)
     }
 }
 
