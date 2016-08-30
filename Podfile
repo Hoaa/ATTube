@@ -14,5 +14,8 @@ pod 'SVPullToRefresh'
 pod ‘PageMenu’
 pod ‘SDWebImage’
 pod 'RealmSwift'
+pod 'PureLayout'
+pod 'PagingMenuController'
+pod 'SwiftMessages', :git => 'https://github.com/SwiftKickMobile/SwiftMessages.git'
 
 end

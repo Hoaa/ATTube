@@ -22,8 +22,7 @@ class Video: Object, Mappable {
     dynamic var viewCount: String?
 
     let owners = LinkingObjects(fromType: Playlist.self, property: "videos")
-    
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -31,15 +30,27 @@ class Video: Object, Mappable {
     required convenience init?(_ map: Map) {
         self.init()
     }
-    
+
     func mapping(map: Map) {
         self.id <- map["id"]
+        if self.id == nil {
+            self.id <- map["id.videoId"]
+        }
         self.channelID <- map["channelId"]
         self.title <- map["snippet.title"]
         self.describe <- map["snippet.description"]
         self.defaultThumbnailURL <- map["snippet.thumbnails.default.url"]
         self.mediumThumbnailURL <- map["snippet.thumbnails.medium.url"]
         self.highThumbnailURL <- map["snippet.thumbnails.high.url"]
+        self.duration <- map["contentDetails.duration"]
+        self.viewCount <- map["statistics.viewCount"]
+    }
+
+    func del(finished: RealmComplete?) {
+        RealmManager.deleteVideo(self, finished: finished)
+    }
+
+    func updateInfo(map: Map) {
         self.duration <- map["contentDetails.duration"]
         self.viewCount <- map["statistics.viewCount"]
     }

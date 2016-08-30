@@ -91,6 +91,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delgate?.presentViewController()
+        
     }
 }
