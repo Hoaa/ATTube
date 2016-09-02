@@ -16,7 +16,7 @@ private extension String {
 }
 
 protocol AddPlaylistDelegate {
-    func showAlertPlaylist(index: Int)
+    func addVideoToPlaylistAt(index: Int)
 }
 
 class TrendingCell: UITableViewCell {
@@ -30,7 +30,7 @@ class TrendingCell: UITableViewCell {
 
     var delegate: AddPlaylistDelegate?
     private var index = 0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         autoFontSize()
@@ -65,9 +65,8 @@ class TrendingCell: UITableViewCell {
         descriptionLabel.font = helveticaFont.Regular(13)
         totalViewsLabel.font = helveticaFont.Regular(13)
     }
-    
-    
+
     @IBAction func didTapMoreButton(sender: UIButton) {
-        delegate?.showAlertPlaylist(index)
+        delegate?.addVideoToPlaylistAt(index)
     }
 }

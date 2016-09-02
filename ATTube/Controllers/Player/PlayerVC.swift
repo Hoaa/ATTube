@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 import SVPullToRefresh
 
 protocol PlayerVCDelegate {
-    func presentViewController()
+    func playVideo(index: Int?, InListVideos listVideos: List<Video>?, isShowPlaylist: Bool)
 }
 
 class PlayerVC: ViewController {
@@ -19,6 +20,21 @@ class PlayerVC: ViewController {
     @IBOutlet private weak var videoNameLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+
+    private var listVideos: List<Video>?
+    private var indexPlayingVideo: Int = 0
+    private var isShowPlaylist = false
+
+    init(index: Int?, listVideos: List<Video>?, isShowPlaylist: Bool) {
+        super.init(nibName: "PlayerVC", bundle: nil)
+        self.isShowPlaylist = isShowPlaylist
+        self.listVideos = listVideos
+        indexPlayingVideo = index ?? 0
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

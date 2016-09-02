@@ -38,9 +38,11 @@ struct Strings {
     static let addNew = "Create new"
     static let playlistNamePlaceHolder = "Playlist name"
 
-    static let failure = "FAILURE"
-    static let success = "SUCCESS"
-    static let failureMessage = "Can not add video into playlist"
+    static let warning = "Warning"
+    static let success = "Success"
+    static let warningMessage = "The video is existed in playlist"
     static let successMessage = "The video has added"
+
+    static let notificationAddPlaylist = "Add Playlist"
 
 }
