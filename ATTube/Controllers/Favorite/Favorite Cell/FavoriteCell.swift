@@ -42,15 +42,16 @@ class FavoriteCell: UITableViewCell {
     }
 
     func configCellAtIndex(index: Int, object: Playlist?) {
+        contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
+
         playlistNameLabel.text = object?.title
         totalVideoLabel.text = "\(object?.videos.count ?? 0)"
         playlist = object
-        collectionView.reloadData()
 
         collectionView.registerNib(FavoriteCollectionCell)
         collectionView.delegate = self
         collectionView.dataSource = self
-        contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
+        collectionView.reloadData()
     }
 
     static func getCellHeight() -> CGFloat {
