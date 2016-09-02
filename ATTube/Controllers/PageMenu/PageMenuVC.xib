@@ -27,7 +27,7 @@
                             <color key="textColor" red="0.96078431372549022" green="0.82745098039215681" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-Ec-3g5" userLabel="search">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-Ec-3g5" userLabel="search">
                             <rect key="frame" x="343" y="31" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="TVw-T7-prM"/>
@@ -111,6 +111,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Search" width="14" height="14"/>
+        <image name="Search" width="22" height="22"/>
     </resources>
 </document>

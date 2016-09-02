@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "BgHomeCell@2x.png"
+      "filename" : "BgHomeCell@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "BgHomeCell@3x.jpeg",
+      "filename" : "BgHomeCell@3x.jpg",
       "scale" : "3x"
     }
   ],

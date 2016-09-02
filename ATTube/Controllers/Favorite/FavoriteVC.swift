@@ -18,6 +18,7 @@ class FavoriteVC: ViewController {
 
     // MARK:- Outlet
     @IBOutlet private weak var tableView: UITableView!
+    private var selectedIndexPlaylist = 0
 
     // MARK:- Property
     private var playlists: Results<Playlist>?
@@ -63,6 +64,7 @@ extension FavoriteVC: UITableViewDataSource, UITableViewDelegate {
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let playlist = playlists?[indexPath.row]
             let favoriteCell = tableView.dequeue(FavoriteCell)
+            favoriteCell.delegate = self
             favoriteCell.configCellAtIndex(indexPath.row, object: playlist)
             return favoriteCell
     }
@@ -70,5 +72,40 @@ extension FavoriteVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView,
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return FavoriteCell.getCellHeight()
+    }
+}
+
+extension FavoriteVC: FavoriteCellDelegate {
+    func playVideo(indexVideo: Int?, InPlaylist indexPlaylist: Int) {
+        selectedIndexPlaylist = indexPlaylist
+        let player = PlayerVC(index: indexVideo, listVideos: playlists?[indexPlaylist].videos, isShowPlaylist: true)
+        player.delegate = self
+        self.presentViewController(player, animated: true, completion: nil)
+    }
+}
+
+extension FavoriteVC: UpdatePlaylistDelegate {
+
+    func deleteVideoAt(index: Int) {
+        playlists?[selectedIndexPlaylist].deleteVideoByIndex(index, finished: { (success, error) in
+            if success {
+                self.playlists = RealmManager.getAvailablePlaylists()
+                self.tableView.reloadData()
+            }
+        })
+    }
+
+    func swapVideo(firstIndex: Int, secondIndex: Int) {
+        playlists?[selectedIndexPlaylist].swapVideo(firstIndex, index2: secondIndex)
+        tableView.reloadData()
+    }
+
+    func deletePlaylist() {
+        if playlists?.count <= selectedIndexPlaylist {
+            self.tableView.reloadData()
+            return
+        }
+        playlists?[selectedIndexPlaylist].del({ (success, error) in
+        })
     }
 }

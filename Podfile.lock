@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (3.4.1)
   - ObjectMapper (1.3.0)
-  - PageMenu (1.2.9)
   - PagingMenuController (1.1.2)
   - PureLayout (3.0.2)
   - Realm (1.0.2):
@@ -15,11 +14,11 @@ PODS:
   - SVPullToRefresh (0.4.1)
   - SwiftMessages (1.1.2)
   - SwiftUtils (1.4.5)
+  - XCDYouTubeKit (2.5.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - ObjectMapper (~> 1.3)
-  - PageMenu
   - PagingMenuController
   - PureLayout
   - RealmSwift
@@ -27,6 +26,7 @@ DEPENDENCIES:
   - SVPullToRefresh
   - SwiftMessages (from `https://github.com/SwiftKickMobile/SwiftMessages.git`)
   - SwiftUtils (~> 1.4.5)
+  - XCDYouTubeKit (~> 2.5)
 
 EXTERNAL SOURCES:
   SwiftMessages:
@@ -40,7 +40,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
-  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
   PagingMenuController: a47a9669760b95f630cc3ef28bdce104f9107d14
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
@@ -49,7 +48,8 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftMessages: 7c017fd24ae6c15a79a6203ef44d3e5c56afd2c8
   SwiftUtils: f4200309f3d12c3caee5601ff857c23aad360b81
+  XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
 
-PODFILE CHECKSUM: 9724f0f8082f26f4998e4dc449649f3e7e899cf0
+PODFILE CHECKSUM: 1da1e61913dcec0d60b77ebaf45566bf359364ef
 
 COCOAPODS: 1.0.1

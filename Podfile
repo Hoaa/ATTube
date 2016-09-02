@@ -11,9 +11,10 @@ pod 'Alamofire', '~> 3.4'
 pod 'SwiftUtils', '~> 1.4.5'
 pod 'ObjectMapper', '~> 1.3'
 pod 'SVPullToRefresh'
-pod ‘PageMenu’
+#pod ‘PageMenu’
 pod ‘SDWebImage’
 pod 'RealmSwift'
+pod 'XCDYouTubeKit', '~> 2.5'
 pod 'PureLayout'
 pod 'PagingMenuController'
 pod 'SwiftMessages', :git => 'https://github.com/SwiftKickMobile/SwiftMessages.git'

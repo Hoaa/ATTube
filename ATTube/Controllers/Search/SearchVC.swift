@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SVPullToRefresh
+import RealmSwift
 
 class SearchVC: ViewController {
 
@@ -24,6 +25,7 @@ class SearchVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,19 +78,21 @@ class SearchVC: ViewController {
                 self.searchVideos.removeAll()
                 self.searchResultTableView.reloadData()
             }
-            
-            APIManager.sharedInstance.getVideosWith(searchKey, maxResults: limit, nextPageToken: nextPageToken) { (videos, nextPageToken, error) in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                self.searchResultTableView.pullToRefreshView.stopAnimating()
-                self.searchResultTableView.infiniteScrollingView.stopAnimating()
-                
-                if let videos = videos where error == nil {
-                    self.nextPageToken = nextPageToken
-                    print(self.nextPageToken)
-                    self.searchVideos.appendContentsOf(videos)
-                    self.searchResultTableView.reloadData()
-                    
-                }
+
+            APIManager.sharedInstance.getVideosWith(searchKey, relatedVideoIdentifier: nil,
+                maxResults: limit,
+                nextPageToken: nextPageToken) { (videos, nextPageToken, error) in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    self.searchResultTableView.pullToRefreshView.stopAnimating()
+                    self.searchResultTableView.infiniteScrollingView.stopAnimating()
+
+                    if let videos = videos where error == nil {
+                        self.nextPageToken = nextPageToken
+                        print(self.nextPageToken)
+                        self.searchVideos.appendContentsOf(videos)
+                        self.searchResultTableView.reloadData()
+
+                    }
             }
         } else {
             self.searchResultTableView.pullToRefreshView.stopAnimating()
@@ -106,7 +110,7 @@ class SearchVC: ViewController {
     // MARK: - IBAciton
     @IBAction private func dismissViewController(sender: UIButton) {
         view.endEditing(true)
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
 
 }
@@ -122,10 +126,19 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(PlayerCell)
         let video = searchVideos[indexPath.row]
+        let cell = tableView.dequeue(PlayerCell)
+        cell.delegate = self
         cell.configCellAtIndex(indexPath.row, object: video)
         return cell
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let video = searchVideos[indexPath.row]
+        let listVideos = List<Video>()
+        listVideos.append(video)
+        let playerVC = PlayerVC(index: 0, listVideos: listVideos, isShowPlaylist: false)
+        presentViewController(playerVC, animated: true, completion: nil)
     }
 }
 
@@ -151,5 +164,11 @@ extension SearchVC: UISearchBarDelegate {
         } else {
             loadVideo(isRefresh: true)
         }
+    }
+}
+
+extension SearchVC: AddPlaylistDelegate {
+    func addVideoToPlaylistAt(indexCell: Int) {
+        showAlertAddVideoToPlaylist(searchVideos[indexCell])
     }
 }

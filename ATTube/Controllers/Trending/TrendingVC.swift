@@ -59,6 +59,10 @@ class TrendingVC: ViewController {
     }
 
     private func loadVideos(isRefresh refresh: Bool) {
+        if !Reachability.isConnectedToNetwork() {
+            Message.warning(Strings.warning, subTitle: Strings.networkFailedMessage)
+            return
+        }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         if refresh {
             nextPageToken = nil
@@ -107,7 +111,6 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
     }
 }
 

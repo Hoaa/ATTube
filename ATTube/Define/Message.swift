@@ -33,6 +33,5 @@ class Message {
         warningConfig.presentationStyle = .Bottom
         warningConfig.presentationContext = .Window(windowLevel: UIWindowLevelStatusBar)
         SwiftMessages.show(config: warningConfig, view: warning)
-
     }
 }
