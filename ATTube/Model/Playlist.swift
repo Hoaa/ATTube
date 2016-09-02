@@ -19,12 +19,26 @@ class Playlist: Object {
         self.title = name
     }
 
-    func addVideo(video: Video) -> Bool {
+    func addVideo(video: Video, finished: RealmComplete?) {
         for item in videos {
             if video.id == item.id {
-                return false
+                finished?(success: false, error: nil)
+                return
             }
         }
-        return RealmManager.addVideo(video, Into: videos)
+        RealmManager.addVideo(video: video, into: videos, finished: finished)
     }
+
+    func deleteVideoByIndex(index: Int, finished: RealmComplete?) {
+        return RealmManager.deleteVideoByIndex(index, inPlaylist: self, finished: finished)
+    }
+
+    func swapVideo(index1: Int, index2: Int) -> Bool {
+        return RealmManager.swapVideo(videos, between: index1, and: index2)
+    }
+
+    func del(finished: RealmComplete) {
+        RealmManager.deletePlaylist(playlist: self, finished: finished)
+    }
+
 }

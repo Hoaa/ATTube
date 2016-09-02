@@ -31,11 +31,41 @@ class ViewController: UIViewController {
         return .LightContent
     }
 
-    func showMessage(title: String, message: String) {
-        let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertcontroller.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-            alertcontroller.dismissViewControllerAnimated(true, completion: nil)
-            }))
-        presentViewController(alertcontroller, animated: true, completion: nil)
+    func showAlertAddVideoToPlaylist(video: Video) {
+        var playlistNames = [String]()
+        let playlists = RealmManager.getAllPlaylist()
+        if let playlists = playlists {
+            for item in playlists {
+                playlistNames.append(item.title)
+            }
+        }
+        Alert.sharedInstance.showActionSheet(self,
+            title: Strings.addPlaylist,
+            message: Strings.messagePlaylist,
+            options: playlistNames) { (index, isCreate) in
+                if isCreate {
+                    Alert.sharedInstance.inputTextAlert(self, title: Strings.addNew, message: "", confirmHandler: { (text) in
+                        if text != "" {
+                            self.addVideo(video: video, intoPlaylist: text)
+                        }
+                    })
+                } else {
+                    guard let playlists = playlists, index = index else {
+                        return
+                    }
+                    self.addVideo(video: video, intoPlaylist: playlists[index].title)
+                }
+        }
+    }
+
+    private func addVideo(video video: Video, intoPlaylist playlistName: String) {
+        RealmManager.addVideo(video: video, intoPlaylistName: playlistName, finished: { (success, error) in
+            if success {
+                Message.success(Strings.success, subTitle: Strings.successMessage)
+                NSNotificationCenter.defaultCenter().postNotificationName(Strings.notificationAddPlaylist, object: nil)
+            } else {
+                Message.warning(Strings.warning, subTitle: Strings.warningMessage)
+            }
+        })
     }
 }
