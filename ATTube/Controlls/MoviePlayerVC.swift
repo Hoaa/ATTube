@@ -11,7 +11,7 @@ import XCDYouTubeKit
 import AVKit
 
 protocol MoviePlayerVCDelegate {
-    func playOtherVideo(isNext isNextVideo: Bool)
+    func playOtherVideo(action actions: Actions)
     func closePlayerViewController()
     func stopAnimationLoading()
     func fullScreen(isFullscreen flag: Bool)
@@ -21,6 +21,12 @@ enum Buttons: Int {
     case Previous = 1
     case Next
     case Play
+}
+
+enum Actions: Int {
+    case NextVideo = 1
+    case PreviousVideo
+    case BackplayDidFinish
 }
 
 private extension Selector {
@@ -191,7 +197,7 @@ class MoviePlayerVC: ViewController {
     @objc private func moviePlayerPlayBackDidFinish(notification: NSNotification) {
         print("moviePlayerPlayBackDidFinish")
         configControlViewPlayblackFinished()
-        delegate?.playOtherVideo(isNext: true)
+        delegate?.playOtherVideo(action: .BackplayDidFinish)
     }
 
     @objc private func moviePlayerNowPlayingMovieDidChange(notification: NSNotification) {
@@ -305,10 +311,10 @@ class MoviePlayerVC: ViewController {
         }
         switch buttonItem {
         case .Next:
-            delegate?.playOtherVideo(isNext: true)
+            delegate?.playOtherVideo(action: .NextVideo)
             break
         case .Previous:
-            delegate?.playOtherVideo(isNext: false)
+            delegate?.playOtherVideo(action: .PreviousVideo)
             break
         case .Play:
             guard let mediaPlayer = mediaPlayer else { return }

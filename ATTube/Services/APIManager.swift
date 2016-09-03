@@ -93,7 +93,10 @@ enum Router: URLRequestConvertible {
             mutableURLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         switch self {
-        case .Trending, .Search, .DetailInformation:
+        case .Trending, .DetailInformation:
+//            print(Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameter).0)
+            return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameter).0
+        case .Search:
             print(Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameter).0)
             return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameter).0
         }

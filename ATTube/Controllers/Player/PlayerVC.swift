@@ -51,11 +51,14 @@ class PlayerVC: ViewController {
 
     private var moviePlayerVC: MoviePlayerVC?
     private var listVideos: List<Video>?
+    private var history: List<Video>?
     private var indexPlayingVideo: Int = 0
+    private var indexHistory = 0
     private var isShowPlaylist = false
     private var isExpand = false
     private var isFullScreen = false
-    private var nextPageToken: String?
+    private var isAutoplay = true
+    private var nextPageToken: String? = nil
     private var limit = 10
 
     var delegate: UpdatePlaylistDelegate?
@@ -85,20 +88,6 @@ class PlayerVC: ViewController {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK - Init UI & Data
-    private func configMoviePlayerViewController() {
-        moviePlayerVC = MoviePlayerVC(videoIdentifier: listVideos?[indexPlayingVideo].id)
-
-        guard let moviePlayerVC = moviePlayerVC, video = listVideos?[indexPlayingVideo] else { return }
-        moviePlayerVC.delegate = self
-        moviePlayerVC.fetchVideo()
-        playVideoView.addSubview(moviePlayerVC.view)
-        moviePlayerVC.view.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        indicator.startAnimating()
-        addChildViewController(moviePlayerVC)
-        loadDataForPlayingVideo(video)
-    }
-
     override func configUI() {
         addNotification()
         autoFontSize()
@@ -110,8 +99,9 @@ class PlayerVC: ViewController {
             let longPress = UILongPressGestureRecognizer(target: self, action: .longPressGestureRecognized)
             videosTableView.addGestureRecognizer(longPress)
         } else {
+            videosTableView.registerNib(AutoplayCell)
             videosTableView.addInfiniteScrollingWithActionHandler {
-                self.handleLoadMore()
+                self.handleLoadMore(self.listVideos?[0])
             }
             configPullToRefreshView()
         }
@@ -119,20 +109,41 @@ class PlayerVC: ViewController {
 
     override func loadData() {
         configMoviePlayerViewController()
-        handleLoadMore()
+        handleLoadMore(listVideos?[indexPlayingVideo])
+        history = List<Video>()
+    }
+
+    // MARK - Init UI & Data
+    private func configMoviePlayerViewController() {
+        moviePlayerVC = MoviePlayerVC(videoIdentifier: listVideos?[indexPlayingVideo].id)
+        guard let moviePlayerVC = moviePlayerVC, video = listVideos?[indexPlayingVideo] else { return }
+        moviePlayerVC.delegate = self
+        moviePlayerVC.fetchVideo()
+        indicator.startAnimating()
+        playVideoView.addSubview(moviePlayerVC.view)
+        moviePlayerVC.view.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        addChildViewController(moviePlayerVC)
+        loadDataForPlayingVideo(video)
+        if !isShowPlaylist {
+            saveHistory(video)
+        }
+    }
+
+    private func saveHistory(video: Video) {
+        history?.append(video)
+        indexHistory = (history?.count ?? 1) - 1
     }
 
     // MARK:- Notification function
     @objc private func rotated() {
         switch UIDevice.currentDevice().orientation {
         case .Portrait:
-            portraitDevice()
             isFullScreen = false
         case .LandscapeLeft, .LandscapeRight, .PortraitUpsideDown:
             isFullScreen = true
-            landscapeDevice()
-        default: break
+        default: return
         }
+        updateFrameWhenRotatedDevice(isLandsape: isFullScreen)
         moviePlayerVC?.updateIconFullScreen(isFullscreen: isFullScreen)
     }
 
@@ -230,7 +241,34 @@ class PlayerVC: ViewController {
         videosTableView.infiniteScrollingView.activityIndicatorViewStyle = .White
     }
 
-    private func handleLoadMore() { }
+    private func handleLoadMore(video: Video?) {
+        if !isShowPlaylist {
+            guard let video = video, listVideos = listVideos else { return }
+            print("\n Related Video of \(video.title) \(video.id)")
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            APIManager.sharedInstance.getVideosWith(nil,
+                relatedVideoIdentifier: video.id,
+                maxResults: limit,
+                nextPageToken: nextPageToken) { (videos, nextPageToken, error) in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    self.videosTableView.infiniteScrollingView.stopAnimating()
+
+                    if let videos = videos where error == nil {
+                        self.nextPageToken = nextPageToken
+                        print("NextpageToken NEW: \(nextPageToken)")
+                        listVideos.appendContentsOf(videos)
+
+                        self.videosTableView.beginUpdates()
+                        var indexPaths = [NSIndexPath]()
+                        for row in (listVideos.count - videos.count)..<listVideos.count {
+                            indexPaths.append(NSIndexPath(forRow: row, inSection: 0))
+                        }
+                        self.videosTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                        self.videosTableView.endUpdates()
+                    }
+            }
+        }
+    }
 
     private func autoFontSize() {
         let helveticaFont = HelveticaFont()
@@ -269,7 +307,7 @@ class PlayerVC: ViewController {
 
         if indexPlayingVideo == index {
             indexPlayingVideo = 0
-            playVideo()
+            playVideo(listVideos?[indexPlayingVideo])
             moveToSelectedCell(indexPlayingVideo)
         }
     }
@@ -291,20 +329,17 @@ class PlayerVC: ViewController {
         reloadSectionIndexTitles()
     }
 
-    private func landscapeDevice() {
+    private func updateFrameWhenRotatedDevice(isLandsape flag: Bool) {
         guard let moviePlayerView = moviePlayerVC?.view else { return }
         moviePlayerView.removeFromSuperview()
-        view.addSubview(moviePlayerView)
-        moviePlayerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        view.bringSubviewToFront(moviePlayerView)
-    }
-
-    private func portraitDevice() {
-        guard let moviePlayerView = moviePlayerVC?.view else { return }
-        moviePlayerView.removeFromSuperview()
-        playVideoView.addSubview(moviePlayerView)
-        moviePlayerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-
+        if flag {
+            view.addSubview(moviePlayerView)
+            moviePlayerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            view.bringSubviewToFront(moviePlayerView)
+        } else {
+            playVideoView.addSubview(moviePlayerView)
+            moviePlayerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        }
     }
 
     private func snapshotOfCell(inputView: UIView) -> UIView {
@@ -335,12 +370,24 @@ class PlayerVC: ViewController {
         isExpand = !(flag ?? isExpand)
     }
 
-    private func playVideo() {
+    private func playVideo(video: Video?) {
+        guard let video = video else { return }
         if indexPlayingVideo >= listVideos?.count { return }
         showDescription(true)
-        moviePlayerVC?.videoIdentifier = listVideos?[indexPlayingVideo].id
+        moviePlayerVC?.videoIdentifier = video.id
         moviePlayerVC?.fetchVideo()
-        loadDataForPlayingVideo(listVideos?[indexPlayingVideo])
+        loadDataForPlayingVideo(video)
+    }
+
+    private func loadRelatedVideo(video: Video?) {
+        if let playingVideo = video {
+            indexPlayingVideo = 0
+            nextPageToken = nil
+            listVideos?.removeAll()
+            listVideos?.append(playingVideo)
+            videosTableView.reloadData()
+            handleLoadMore(playingVideo)
+        }
     }
 
     // MARK:- IBAction
@@ -368,10 +415,19 @@ extension PlayerVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if !isShowPlaylist && indexPath.row == 0 { return AutoplayCell.getCellHeight() }
         return PlayerCell.getCellHeight()
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if !isShowPlaylist && indexPath.row == 0 {
+            let autoplayCell = tableView.dequeue(AutoplayCell)
+            autoplayCell.autoplay = { (isOn) in
+                self.isAutoplay = isOn
+                print("isAutoplay = \(self.isAutoplay)")
+            }
+            return autoplayCell
+        }
         let video = listVideos?[indexPath.row]
         let playerCell = tableView.dequeue(PlayerCell)
         playerCell.configCellAtIndex(indexPath.row, object: video)
@@ -380,8 +436,14 @@ extension PlayerVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         indexPlayingVideo = indexPath.row
-        moveToSelectedCell(indexPlayingVideo)
-        playVideo()
+        playVideo(listVideos?[indexPlayingVideo])
+        if !isShowPlaylist {
+            guard let video = listVideos?[indexPlayingVideo] else { return }
+            saveHistory(video)
+            loadRelatedVideo(video)
+        } else {
+            moveToSelectedCell(indexPlayingVideo)
+        }
     }
 
     // Action for cell
@@ -403,19 +465,51 @@ extension PlayerVC: MoviePlayerVCDelegate {
         indicator.stopAnimating()
     }
 
-    func playOtherVideo(isNext isNextVideo: Bool) {
-        guard let listVideos = listVideos else { return }
-        if isShowPlaylist {
-            if isNextVideo {
-                if indexPlayingVideo == listVideos.count - 1 { return }
-                indexPlayingVideo += 1
-            } else {
-                indexPlayingVideo = indexPlayingVideo == 0 ? 0 : indexPlayingVideo - 1
-            }
-            moveToSelectedCell(indexPlayingVideo)
-            playVideo()
-        } else {
+    func playVideoDidFinish() {
+        if isShowPlaylist || (!isShowPlaylist && isAutoplay) {
+            playNextVideo()
+        }
+    }
 
+    func playNextVideo() {
+        guard let listVideos = listVideos else { return }
+        if indexPlayingVideo == listVideos.count - 1 { return }
+        indexPlayingVideo += 1
+        let video = listVideos[indexPlayingVideo]
+        if !isShowPlaylist {
+            saveHistory(video)
+            loadRelatedVideo(video)
+        } else {
+            moveToSelectedCell(indexPlayingVideo)
+        }
+        playVideo(video)
+    }
+
+    func playPreviousVideo() {
+        var video: Video?
+        if isShowPlaylist {
+            indexPlayingVideo = indexPlayingVideo == 0 ? 0 : indexPlayingVideo - 1
+            video = listVideos?[indexPlayingVideo]
+            moveToSelectedCell(indexPlayingVideo)
+        } else {
+            indexHistory -= 1
+            if indexHistory >= 0 && indexHistory < history?.count {
+                video = history?[indexHistory]
+                history?.removeAtIndex(indexHistory + 1)
+                loadRelatedVideo(history?[indexHistory])
+            }
+        }
+        playVideo(video)
+    }
+
+    func playOtherVideo(action action: Actions) {
+        switch action {
+        case .NextVideo:
+            playNextVideo(); break
+        case .PreviousVideo:
+            playPreviousVideo(); break
+        case .BackplayDidFinish:
+            playVideoDidFinish(); break
         }
     }
 
@@ -426,10 +520,6 @@ extension PlayerVC: MoviePlayerVCDelegate {
     }
 
     func fullScreen(isFullscreen flag: Bool) {
-        if flag {
-            landscapeDevice()
-        } else {
-            portraitDevice()
-        }
+        updateFrameWhenRotatedDevice(isLandsape: flag)
     }
 }

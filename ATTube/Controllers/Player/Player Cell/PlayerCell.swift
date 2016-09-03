@@ -29,7 +29,6 @@ class PlayerCell: UITableViewCell {
         super.awakeFromNib()
         autoFontSize()
         selectionStyle = .None
-
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -59,10 +58,6 @@ class PlayerCell: UITableViewCell {
 
     static func getCellHeight() -> CGFloat {
         return .cellHeight
-    }
-
-    func centerThumbnail() -> CGPoint {
-        return CGPoint(x: photoImageView.center.x + 10, y: photoImageView.center.y + 3)
     }
 
     private func autoFontSize() {

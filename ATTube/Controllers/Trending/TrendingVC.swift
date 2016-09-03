@@ -8,6 +8,7 @@
 
 import UIKit
 import SVPullToRefresh
+import RealmSwift
 
 class TrendingVC: ViewController {
 
@@ -93,7 +94,6 @@ class TrendingVC: ViewController {
 
 // MARK: - UITableviewDataSource, UITableViewDelegate
 extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingVideos.count
     }
@@ -111,11 +111,15 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let video = trendingVideos[indexPath.row]
+        let listVideos = List<Video>()
+        listVideos.append(video)
+        let playerVC = PlayerVC(index: 0, listVideos: listVideos, isShowPlaylist: false)
+        presentViewController(playerVC, animated: true, completion: nil)
     }
 }
 
 extension TrendingVC: AddPlaylistDelegate {
-
     func addVideoToPlaylistAt(indexCell: Int) {
         showAlertAddVideoToPlaylist(trendingVideos[indexCell])
     }
