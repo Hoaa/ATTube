@@ -37,4 +37,15 @@ extension UIView {
     convenience init(origin: CGPoint, size: CGSize) {
         self.init(frame: CGRect(origin: origin, size: size))
     }
+
+    func addBlurBackground(blurEffectStyle: UIBlurEffectStyle) {
+        self.backgroundColor = Color.clear
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            let blurEffect = UIBlurEffect(style: blurEffectStyle)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = self.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+            self.addSubview(blurEffectView)
+        }
+    }
 }

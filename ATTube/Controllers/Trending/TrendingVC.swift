@@ -8,6 +8,7 @@
 
 import UIKit
 import SVPullToRefresh
+import RealmSwift
 
 class TrendingVC: ViewController {
 
@@ -59,6 +60,10 @@ class TrendingVC: ViewController {
     }
 
     private func loadVideos(isRefresh refresh: Bool) {
+        if !Reachability.isConnectedToNetwork() {
+            Message.warning(Strings.warning, subTitle: Strings.networkFailedMessage)
+            return
+        }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         if refresh {
             nextPageToken = nil
@@ -71,7 +76,6 @@ class TrendingVC: ViewController {
 
             self.videosTableView.pullToRefreshView.stopAnimating()
             self.videosTableView.infiniteScrollingView.stopAnimating()
-
             if let videos = videos where error == nil {
                 self.nextPageToken = nextPageToken
                 self.trendingVideos.appendContentsOf(videos)
@@ -90,7 +94,6 @@ class TrendingVC: ViewController {
 
 // MARK: - UITableviewDataSource, UITableViewDelegate
 extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingVideos.count
     }
@@ -108,45 +111,16 @@ extension TrendingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.presentViewController()
+        let video = trendingVideos[indexPath.row]
+        let listVideos = List<Video>()
+        listVideos.append(video)
+        let playerVC = PlayerVC(index: 0, listVideos: listVideos, isShowPlaylist: false)
+        presentViewController(playerVC, animated: true, completion: nil)
     }
 }
 
 extension TrendingVC: AddPlaylistDelegate {
-
-    func showAlertPlaylist(indexCell: Int) {
-
-        var playlistNames = [String]()
-        let playlists = RealmManager.getAllPlaylist()
-        if let playlists = playlists {
-            for item in playlists {
-                playlistNames.append(item.title)
-            }
-        }
-
-        Alert.sharedInstance.showActionSheet(self,
-            title: Strings.addPlaylist,
-            message: Strings.messagePlaylist,
-            options: playlistNames) { (index, isCreate) in
-                if isCreate {
-                    Alert.sharedInstance.inputTextAlert(self, title: Strings.addNew, message: "", confirmHandler: { (text) in
-                        if text != "" {
-                            RealmManager.addPlaylist(text, finished: {
-                                self.showAlertPlaylist(indexCell)
-                            })
-                        }
-                    })
-                } else {
-                    guard let playlists = playlists, index = index else {
-                        return
-                    }
-                    let success = playlists[index].addVideo(self.trendingVideos[indexCell])
-                    if success {
-                        Alert.sharedInstance.showAlert(self, title: Strings.success, message: Strings.successMessage)
-                    } else {
-                        Alert.sharedInstance.showAlert(self, title: Strings.failure, message: Strings.failureMessage)
-                    }
-                }
-        }
+    func addVideoToPlaylistAt(indexCell: Int) {
+        showAlertAddVideoToPlaylist(trendingVideos[indexCell])
     }
 }

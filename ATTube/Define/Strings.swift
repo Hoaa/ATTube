@@ -28,7 +28,7 @@ struct Strings {
     static let trendingChart = "mostPopular"
 
     static let searchPart = "snippet"
-    static let searchVideoDefinition = "standard"
+    static let searchVideoDefinition = "high"
 
     static let yes = "Yes"
     static let confirm = "Confirm"
@@ -38,9 +38,22 @@ struct Strings {
     static let addNew = "Create new"
     static let playlistNamePlaceHolder = "Playlist name"
 
-    static let failure = "FAILURE"
-    static let success = "SUCCESS"
-    static let failureMessage = "Can not add video into playlist"
+    static let warning = "Warning"
+    static let success = "Success"
+    static let warningMessage = "The video is existed in playlist"
     static let successMessage = "The video has added"
+    static let networkFailedMessage = "Can not connect to network"
+    static let fetchVideoFailedMessage = "Can not load this video"
+
+    static let showMore = "Show more"
+    static let showLess = "Show less"
+
+    static let notificationAddPlaylist = "Add Playlist"
+
+    static let mpMoviePlayerNowPlayingMovieDidChange = "MPMoviePlayerNowPlayingMovieDidChangeNotification"
+    static let mpMoviePlayerLoadStateDidChange = "MPMoviePlayerLoadStateDidChangeNotification"
+    static let mpMoviePlayerPlaybackStateDidChange = "MPMoviePlayerPlaybackStateDidChangeNotification"
+    static let mpMoviePlayerPlaybackDidFinish = "MPMoviePlayerPlaybackDidFinishNotification"
+    static let undefinedTime = "--:--"
 
 }

@@ -19,23 +19,38 @@ class PlayerCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var totalViewsLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var stateVideoImageView: UIImageView!
+
+    @IBOutlet weak var blurView: UIView!
+    var delegate: AddPlaylistDelegate?
+    var isPlaying = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
         autoFontSize()
+        selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        blurView.hidden = !selected
+        blurView.alpha = 0.0
+
+        bringSubviewToFront(blurView)
+        UIView.animateWithDuration(0.3) {
+            self.blurView.alpha = 1.0
+
+        }
     }
 
     func configCellAtIndex(index: Int, object: Video?) {
         contentView.backgroundColor = index % 2 == 0 ? Color.black10 : Color.black20
         videoNameLabel.text = object?.title ?? "Miley"
-        descriptionLabel.text = object?.description ?? "Description description  description  description  description "
+        descriptionLabel.text = object?.describe ?? "Description description  description  description  description "
         totalViewsLabel.text = HandleData.viewCount(object?.viewCount) ?? "1M Views"
         durationLabel.text = HandleData.duration(object?.duration) ?? "2:30"
-        
+
         if let thumbnailURLString = object?.highThumbnailURL, thumbnailURL = NSURL(string: thumbnailURLString) {
             photoImageView.sd_setImageWithURL(thumbnailURL, placeholderImage: UIImage(assetIdentifier: .BgHomeCell))
         }
